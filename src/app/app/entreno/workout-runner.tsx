@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-location-assign-relative-destination -- navegación completa intencionada: refresca los datos del servidor tras entrenar */
 'use client'
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'

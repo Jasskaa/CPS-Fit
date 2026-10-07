@@ -154,7 +154,7 @@ push('-- Rutinas de socios (copia de plantilla) + asignaciones')
 const MAP = PEOPLE.filter((x) => x.role === 'member').map((p) => {
   const tpl = TEMPLATES.find((t) => t.key === PLAN[p.idx])
   const trainer = PEOPLE[p.idx < 6 ? 1 : 2]
-  return `(${q(uid(0xb1, p.idx + 1))},${q(pid(p))},${q(pid(trainer))},${q(tplIds[PLAN[p.idx]])},${p.idx === 10 ? 0 : 42})`
+  return `(${q(uid(0xb1, p.idx + 1))},${q(pid(p))},${q(pid(trainer))},${q(tplIds[PLAN[p.idx]])},${p.idx === 10 ? 0 : 14 + p.idx * 3})`
 })
 push(`do $$
 declare m record; nr uuid; d record; nd uuid; tw smallint;
@@ -235,6 +235,9 @@ begin
   end loop;
   raise notice 'sesiones demo: %', n;
 end $$;
+
+-- Sin sesiones en el futuro (si se genera a primera hora del día)
+update public.workout_sessions set started_at = started_at - interval '1 day', ended_at = ended_at - interval '1 day' where ended_at > now() - interval '5 minutes';
 
 insert into public.personal_records (member_id, exercise_id, kind, value, session_id, achieved_at)
 select distinct on (ws.member_id, st.exercise_id) ws.member_id, st.exercise_id, 'e1rm',

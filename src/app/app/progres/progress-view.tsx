@@ -68,7 +68,7 @@ function Sessions({ sessions, sessionVolume, locale, units }: { sessions: Sessio
         <div className="mb-2 flex items-center justify-between">
           <button className="btn btn-ghost !w-11 !px-0" onClick={() => shift(-1)} aria-label={t('prevMonth')}><ChevronLeft aria-hidden /></button>
           <div className="text-center">
-            <p className="font-display text-2xl font-bold capitalize">{month.toLocaleDateString(locale, { month: 'long', year: 'numeric' })}</p>
+            <p className="font-display text-2xl font-bold first-letter:uppercase">{month.toLocaleDateString(locale, { month: 'long', year: 'numeric' })}</p>
             <p className="text-xs text-muted">{t('monthCount', { n: monthCount })}</p>
           </div>
           <button className="btn btn-ghost !w-11 !px-0" onClick={() => shift(1)} aria-label={t('nextMonth')}><ChevronRight aria-hidden /></button>
@@ -95,7 +95,7 @@ function Sessions({ sessions, sessionVolume, locale, units }: { sessions: Sessio
             <li key={s.id} className="card flex items-center justify-between gap-3 p-3">
               <div>
                 <p className="font-semibold">{s.day_name ?? '—'}</p>
-                <p className="text-xs capitalize text-muted">{new Date(s.started_at).toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'short' })}</p>
+                <p className="text-xs text-muted first-letter:uppercase">{new Date(s.started_at).toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'short' })}</p>
               </div>
               <div className="text-right text-xs text-muted tnum">
                 {dur > 0 && <p>{formatDuration(dur)}</p>}

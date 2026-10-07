@@ -2,7 +2,7 @@
    - Estáticos (_next/static, iconos, marca): cache-first.
    - Páginas de /app: network-first con copia en caché para verlas sin conexión.
    - Datos de Supabase NO se cachean aquí: los entrenos pendientes viven en IndexedDB (cola de sincronización). */
-const VERSION = 'cpsfit-v1'
+const VERSION = 'cpsfit-v2'
 const STATIC = `${VERSION}-static`
 const PAGES = `${VERSION}-pages`
 
@@ -37,7 +37,8 @@ self.addEventListener('fetch', (event) => {
     return
   }
 
-  if (req.mode === 'navigate' || req.headers.get('accept')?.includes('text/html') || req.headers.get('RSC')) {
+  // Solo navegaciones HTML (las peticiones RSC de Next no se cachean: colisionarían con el HTML de la misma URL).
+  if (req.mode === 'navigate' && !req.headers.get('RSC')) {
     if (url.pathname.startsWith('/admin') || url.pathname.startsWith('/api')) return
     event.respondWith(
       fetch(req)
@@ -48,7 +49,23 @@ self.addEventListener('fetch', (event) => {
           }
           return res
         })
-        .catch(async () => (await caches.match(req)) || (await caches.match('/offline.html'))),
+        .catch(async () => (await caches.match(req, { ignoreVary: true, ignoreSearch: true })) || (await caches.match('/offline.html'))),
     )
   }
+})
+
+// La app pide precachear las pantallas clave (rutina y entreno) para usarlas sin cobertura.
+self.addEventListener('message', (event) => {
+  if (event.data?.type !== 'precache') return
+  event.waitUntil(
+    caches.open(PAGES).then((cache) =>
+      Promise.all(
+        (event.data.urls || []).map((u) =>
+          fetch(u, { credentials: 'same-origin' })
+            .then((res) => (res.ok && !res.redirected ? cache.put(u, res) : null))
+            .catch(() => null),
+        ),
+      ),
+    ),
+  )
 })

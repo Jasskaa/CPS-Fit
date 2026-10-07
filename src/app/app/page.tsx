@@ -54,14 +54,14 @@ export default async function MemberHome() {
 
       {day && snapshot.routine ? (
         <section className="animate-rise overflow-hidden rounded-3xl bg-primary p-5 text-primary-fg shadow-card" style={{ animationDelay: '60ms' }}>
-          <p className="text-xs font-bold uppercase tracking-widest opacity-80">{t('member.todaySession')}</p>
+          <p className="text-xs font-bold uppercase tracking-widest">{t('member.todaySession')}</p>
           <h2 className="font-display mt-1 text-4xl font-extrabold uppercase leading-none">{day.name}</h2>
-          <p className="mt-1 text-sm opacity-90">{snapshot.routine.name} · {t('member.exerciseCount', { n: day.exercises.length })}</p>
-          <ul className="mt-3 space-y-1 text-sm opacity-95">
+          <p className="mt-1 text-sm">{snapshot.routine.name} · {t('member.exerciseCount', { n: day.exercises.length })}</p>
+          <ul className="mt-3 space-y-1 text-sm">
             {day.exercises.slice(0, 3).map((e) => (
               <li key={e.id} className="flex items-center gap-2"><Dumbbell size={14} aria-hidden /> {e.name}</li>
             ))}
-            {day.exercises.length > 3 && <li className="pl-6 opacity-80">+{day.exercises.length - 3}</li>}
+            {day.exercises.length > 3 && <li className="pl-6">+{day.exercises.length - 3}</li>}
           </ul>
           <Link href={`/app/entreno#${day.id}`} className="btn btn-accent btn-lg mt-5 w-full text-xl uppercase">
             <Play size={22} fill="currentColor" aria-hidden /> {t('member.startWorkout')}

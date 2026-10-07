@@ -4,7 +4,6 @@ import { useMemo, useRef, useState, useTransition } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { ImageUp, Loader2, Pencil, Plus, Search, Trash2 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
-import { Modal } from '@/app/app/entreno/workout-parts'
 import type { Exercise } from '@/lib/types'
 import { deleteExercise, saveExercise } from './actions'
 

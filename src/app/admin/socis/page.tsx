@@ -18,7 +18,7 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
   const locale = await getLocale()
   const supabase = await createClient()
 
-  let query = supabase.from('profiles').select('id, full_name, email, status, member_details(goal, level), routine_assignments(status, routines(name))').eq('role', 'member').order('full_name')
+  let query = supabase.from('profiles').select('id, full_name, email, status, member_details(goal, level), routine_assignments!routine_assignments_member_id_fkey(status, routines(name))').eq('role', 'member').order('full_name')
   if (sp.q) query = query.or(`full_name.ilike.%${sp.q.replace(/[%,()]/g, '')}%,email.ilike.%${sp.q.replace(/[%,()]/g, '')}%`)
   if (sp.status) query = query.eq('status', sp.status)
   const { data: members } = await query
@@ -77,7 +77,7 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
                 const details = Array.isArray(m.member_details) ? m.member_details[0] : m.member_details
                 const act = (m.routine_assignments as unknown as { status: string; routines: { name: string } | null }[] | null)?.find((a) => a.status === 'active')
                 const lastAt = lastBy.get(m.id)
-                const days = lastAt ? Math.floor((Date.now() - new Date(lastAt).getTime()) / 86400000) : null
+                const days = lastAt ? Math.max(0, Math.floor((Date.now() - new Date(lastAt).getTime()) / 86400000)) : null
                 return (
                   <tr key={m.id} className="hover:bg-surface-2">
                     <td className="px-4 py-3"><Link href={`/admin/socis/${m.id}`} className="font-semibold after:absolute after:inset-0 hover:text-primary-text">{m.full_name}</Link><span className="block text-xs text-muted">{m.email}</span></td>
