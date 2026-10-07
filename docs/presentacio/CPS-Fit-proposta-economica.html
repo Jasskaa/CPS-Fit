@@ -1,85 +1,97 @@
-<!doctype html><html lang="ca"><meta charset="utf-8"><style>
-  @page { size: A4; margin: 18mm 17mm 18mm 17mm; }
-  * { box-sizing: border-box; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; color: #0b0d1a; font-size: 10.5pt; line-height: 1.5; margin: 0; }
-  header { display: flex; align-items: center; gap: 14px; border-bottom: 3px solid #2030ff; padding-bottom: 12px; margin-bottom: 18px; }
-  header img { width: 58px; height: 58px; border-radius: 50%; }
-  header h1 { font-size: 22pt; margin: 0; line-height: 1.1; letter-spacing: .3px; }
-  header p { margin: 0; color: #545a74; }
-  h2 { font-size: 13pt; margin: 20px 0 6px; color: #2030ff; }
-  table { width: 100%; border-collapse: collapse; margin: 8px 0; }
-  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #d9dcec; vertical-align: top; }
-  th { background: #f5f6fb; font-size: 9.5pt; text-transform: uppercase; letter-spacing: .4px; color: #545a74; }
-  td.num { text-align: right; white-space: nowrap; font-weight: 700; }
-  .box { background: #f5f6fb; border: 1px solid #d9dcec; border-radius: 8px; padding: 10px 14px; margin: 10px 0; }
-  .warn { background: #fff6bf; border-color: #e6d94a; }
-  ul { margin: 4px 0 4px 18px; padding: 0; } li { margin: 3px 0; }
-  .sign { display: flex; gap: 40px; margin-top: 44px; } .sign div { flex: 1; border-top: 1px solid #0b0d1a; padding-top: 6px; font-size: 9.5pt; color: #545a74; }
-  .check li { list-style: none; margin-left: -18px; } .check li::before { content: '☐  '; font-size: 12pt; }
-  small { color: #545a74; } .total { font-size: 12pt; }
-  footer { margin-top: 22px; font-size: 8.5pt; color: #545a74; border-top: 1px solid #d9dcec; padding-top: 8px; }
+<!doctype html><html lang="ca"><meta charset="utf-8"><title>CPS Fit · Proposta</title><style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #0b0d1a; font-size: 10.3pt; line-height: 1.5; margin: 0; }
+  .page { padding: 0 17mm 14mm; }
+  .band { background: #2030ff; color: #fff; padding: 14mm 17mm 11mm; margin-bottom: 8mm;
+    background-image: repeating-linear-gradient(90deg, rgba(255,255,255,.09) 0 2px, transparent 2px 16px); display: flex; align-items: center; gap: 18px; }
+  .band img { width: 74px; height: 74px; border-radius: 50%; border: 3px solid rgba(255,255,255,.55); background: #fff; }
+  .band h1 { margin: 0; font-size: 27pt; line-height: 1.05; letter-spacing: .3px; }
+  .band h1 span { color: #f8f800; }
+  .band p { margin: 3px 0 0; opacity: .95; font-size: 11pt; }
+  .meta { color: #545a74; font-size: 9.5pt; margin-bottom: 6px; }
+  h2 { font-size: 13pt; margin: 17px 0 6px; color: #2030ff; }
+  p { margin: 6px 0; }
+  .cards { display: flex; gap: 10px; margin: 10px 0 4px; }
+  .card { flex: 1; border: 1px solid #d9dcec; border-radius: 10px; padding: 11px 13px; background: #f5f6fb; }
+  .card.hl { background: #2030ff; border-color: #2030ff; color: #fff; }
+  .card .k { font-size: 8.8pt; text-transform: uppercase; letter-spacing: .5px; opacity: .8; font-weight: 700; }
+  .card .v { font-size: 20pt; font-weight: 800; line-height: 1.1; margin: 2px 0; }
+  .card .s { font-size: 9.3pt; opacity: .9; }
+  .grid { display: flex; gap: 10px; margin-top: 6px; }
+  .col { flex: 1; border: 1px solid #d9dcec; border-radius: 10px; padding: 10px 13px; }
+  .col h3 { margin: 0 0 4px; font-size: 11pt; } ul { margin: 3px 0 3px 17px; padding: 0; } li { margin: 3px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0; }
+  th, td { text-align: left; padding: 7px 9px; border-bottom: 1px solid #d9dcec; vertical-align: top; }
+  th { background: #f5f6fb; font-size: 8.8pt; text-transform: uppercase; letter-spacing: .4px; color: #545a74; }
+  td.n { text-align: right; white-space: nowrap; font-weight: 700; } th.n { text-align: right; }
+  small, .note { color: #545a74; font-size: 9pt; }
+  .future { background: #fff6bf; border: 1px solid #e6d94a; border-radius: 10px; padding: 9px 14px; margin-top: 8px; }
+  .future ul { columns: 2; column-gap: 24px; }
+  footer { margin-top: 14px; padding-top: 8px; border-top: 1px solid #d9dcec; color: #545a74; font-size: 8.8pt; }
 </style><body>
-<header><img src="file:///C:/Users/otecnica4/Desktop/ClaudeCode/CPS-Fit/public/brand/emblem-256.webp" alt=""><div><h1>Proposta econòmica</h1><p>CPS Fit · aplicació de rutines i seguiment per al gimnàs del C.P. Santjoanenc</p></div></header>
-<p><strong>Client:</strong> Club Poliesportiu Santjoanenc · C/ Paperera Torras, 2, 17857 Sant Joan les Fonts<br>
-<strong>Presentada per:</strong> [nom i cognoms / empresa] · [NIF] · [correu] · [telèfon]<br>
-<strong>Data:</strong> 7 d'octubre de 2026 &nbsp;·&nbsp; <strong>Validesa de l'oferta:</strong> 30 dies</p>
+<div class="band"><img src="file:///C:/Users/otecnica4/Desktop/ClaudeCode/CPS-Fit/public/brand/emblem-256.webp" alt=""><div><h1>CPS <span>Fit</span></h1><p>Proposta per digitalitzar les rutines del gimnàs del C.P. Santjoanenc</p></div></div>
+<div class="page">
+<p class="meta"><strong>Per a:</strong> Club Poliesportiu Santjoanenc · C/ Paperera Torras, 2, Sant Joan les Fonts &nbsp;·&nbsp; <strong>De:</strong> [nom i cognoms / empresa] · [correu] · [telèfon] &nbsp;·&nbsp; 7 d'octubre de 2026</p>
 
-<h2>1. Objecte</h2>
-<p>Posada en marxa de <strong>CPS Fit</strong>, una aplicació web instal·lable (PWA) per digitalitzar les rutines d'entrenament dels abonats del gimnàs i el seu seguiment: app per al soci (mòbil) i panell per al monitor i l'administració (ordinador o tauleta), en català i castellà, amb la imatge del club.</p>
+<h2>La idea</h2>
+<p>Tots els abonats del gimnàs reben una rutina personalitzada del monitor de sala. Avui es fa en paper. Proposem que la rutina de cada soci visqui al seu mòbil: el monitor la crea i l'ajusta des de l'ordinador, el soci entrena seguint-la i el club veu, amb dades, com avança cada persona. Tot en català i castellà, i amb la imatge del club.</p>
 
-<h2>2. Què inclou</h2>
-<ul>
-  <li>App del soci: sessió d'avui, entrenament en directe amb temporitzador, funcionament sense cobertura, progrés, rècords, mesures i fotos opcionals, rutines pròpies, informació del club.</li>
-  <li>Panell del monitor: socis, biblioteca d'exercicis (108 inicials), constructor de rutines, plantilles i assignació, seguiment, comentaris, avisos i gestió de monitors.</li>
-  <li>Personalització amb el logo, els colors i el contingut propi del club (exercicis, plantilles).</li>
-  <li>Configuració dels serveis al nom del club (hosting, base de dades, domini) i càrrega inicial de dades.</li>
-  <li>Formació a l'equip de monitors i un pilot amb un grup reduït de socis.</li>
-  <li>Documentació d'ús i de migració de dades.</li>
-</ul>
+<h2>El resultat per al club</h2>
+<div class="grid">
+  <div class="col"><h3>Els socis</h3><ul><li>Tenen la rutina sempre a mà, fins i tot sense cobertura</li><li>Veuen què van fer l'última vegada i com milloren</li><li>Se senten acompanyats pel monitor</li></ul></div>
+  <div class="col"><h3>Els monitors</h3><ul><li>Creen i assignen rutines en pocs clics</li><li>Saben qui entrena i qui ha deixat de venir</li><li>Responen dubtes sense paper ni trucades</li></ul></div>
+  <div class="col"><h3>El club</h3><ul><li>Servei més modern i diferencial</li><li>Més retenció de socis</li><li>Dades pròpies, al nom del club, i el control de la seva privacitat</li></ul></div>
+</div>
 
-<h2>3. Què no inclou</h2>
-<ul>
-  <li>Pagaments i quotes, reserva de classes, control d'accés i integració amb el programari actual del club (Poliwin). L'aplicació enllaça a la zona de reserves existent; l'arquitectura queda preparada per afegir-ho en el futur.</li>
-  <li>Revisió legal del RGPD i dels textos de privacitat (a càrrec del club; orientativament 300–800 €).</li>
-  <li>Funcions noves, formació addicional i importacions massives de dades: es pressuposten a part.</li>
-</ul>
+<h2>Cap on pot créixer</h2>
+<p>La base queda preparada per anar ampliant-se segons les necessitats del club. Són possibles evolucions futures, <strong>no incloses</strong> en aquesta proposta i pressupostables a part:</p>
+<div class="future"><ul>
+  <li>Notificacions al mòbil dels avisos del gimnàs</li>
+  <li>Connexió amb les reserves i quotes del club</li>
+  <li>Informes periòdics per a la junta</li>
+  <li>Vídeos propis dels exercicis</li>
+  <li>Reptes i classificacions entre socis</li>
+  <li>Altres seccions del club (natació, pàdel…)</li>
+</ul></div>
 
-<h2>4. Preus</h2>
+<h2>Inversió</h2>
+<div class="cards">
+  <div class="card hl"><div class="k">Implantació</div><div class="v">2.500 €</div><div class="s">pagament únic</div></div>
+  <div class="card"><div class="k">Manteniment</div><div class="v">150 €</div><div class="s">cada 5 mesos</div></div>
+  <div class="card"><div class="k">Serveis (a càrrec del club)</div><div class="v">≈ 45 $/mes</div><div class="s">hosting i base de dades</div></div>
+</div>
 <table>
-  <tr><th>Concepte</th><th>Periodicitat</th><th style="text-align:right">Import</th></tr>
-  <tr><td><strong>Implantació</strong><br><small>Personalització, càrrega de contingut, formació i posada en marxa</small></td><td>Pagament únic</td><td class="num">2.500,00 €</td></tr>
-  <tr><td><strong>Manteniment</strong><br><small>Vigilància del servei, avisos d'incidències, renovació de dominis i claus, petites correccions</small></td><td>Cada 5 mesos</td><td class="num">150,00 €</td></tr>
+  <tr><th>Què comprèn</th><th></th></tr>
+  <tr><td><strong>Implantació</strong></td><td>Personalització amb el logo i colors del club, càrrega del contingut propi (exercicis i plantilles), configuració dels serveis al nom del club, formació als monitors i posada en marxa amb un pilot amb un grup reduït de socis.</td></tr>
+  <tr><td><strong>Manteniment</strong></td><td>Vigilància que el servei funcioni, avís d'incidències, renovació de dominis i claus i petites correccions.</td></tr>
 </table>
-<p><small>Imports sense IVA. Forma de pagament proposada: 50 % en acceptar la proposta i 50 % en finalitzar el pilot.</small></p>
+<p class="note">Imports sense IVA. Les noves funcions, la formació addicional i les importacions massives de dades es pressuposten a part.</p>
 
-<h2>5. Serveis de tercers (a càrrec del club)</h2>
-<p>Els serveis es contracten <strong>directament pel club, al seu nom</strong>, perquè les dades dels socis siguin del club i el club controli el cost. Costos orientatius (segons les webs dels proveïdors a l'octubre de 2026; poden variar):</p>
+<h2>Serveis de tercers</h2>
+<p>Es contracten <strong>directament pel club, al seu nom</strong>: així les dades dels socis són del club i el club controla el cost. Costos orientatius segons les webs dels proveïdors (octubre de 2026; poden variar):</p>
 <table>
-  <tr><th>Servei</th><th>Per a què</th><th style="text-align:right">Cost orientatiu</th></tr>
-  <tr><td>Vercel Pro</td><td>Hosting de l'aplicació (el pla gratuït no permet ús comercial)</td><td class="num">20 $/mes</td></tr>
-  <tr><td>Supabase Pro</td><td>Base de dades, autenticació, còpies de seguretat diàries i emmagatzematge (servidors a la UE)</td><td class="num">25 $/mes</td></tr>
-  <tr><td>Domini</td><td>Adreça pròpia (p. ex. fit.cpsantjoanenc.org)</td><td class="num">≈ 12 €/any</td></tr>
-  <tr class="total"><td colspan="2"><strong>Total aproximat</strong></td><td class="num">≈ 45 $/mes</td></tr>
+  <tr><th>Servei</th><th>Per a què</th><th class="n">Cost</th></tr>
+  <tr><td>Vercel Pro</td><td>Hosting de l'aplicació (el pla gratuït no permet ús comercial)</td><td class="n">20 $/mes</td></tr>
+  <tr><td>Supabase Pro</td><td>Base de dades, còpies de seguretat diàries i usuaris (servidors a la UE)</td><td class="n">25 $/mes</td></tr>
+  <tr><td>Domini</td><td>Adreça pròpia, p. ex. fit.cpsantjoanenc.org</td><td class="n">≈ 12 €/any</td></tr>
 </table>
+<p class="note">A més, el club hauria de fer revisar per un professional els textos legals de privacitat abans d'usar dades reals de socis (cost orientatiu: 300–800 €).</p>
 
-<h2>6. Planificació</h2>
+<h2>Com ho posaríem en marxa</h2>
 <table>
-  <tr><td><strong>Setmana 1</strong></td><td>Comptes del club, revisió legal i configuració.</td></tr>
+  <tr><td style="width:24%"><strong>Setmana 1</strong></td><td>Comptes del club, revisió legal i configuració.</td></tr>
   <tr><td><strong>Setmana 2</strong></td><td>Contingut propi: exercicis, plantilles, logo i colors oficials.</td></tr>
   <tr><td><strong>Setmana 3</strong></td><td>Formació pràctica als monitors.</td></tr>
-  <tr><td><strong>Setmana 4</strong></td><td>Pilot amb un grup reduït de socis i, després, obertura a tothom.</td></tr>
+  <tr><td><strong>Setmana 4</strong></td><td>Pilot amb 10–15 socis voluntaris i, després, obertura a tothom.</td></tr>
 </table>
-<p><small>Terminis orientatius; depenen que el club aporti comptes, textos i disponibilitat dels monitors.</small></p>
 
-<h2>7. Condicions</h2>
+<h2>Com ho veiem</h2>
 <ul>
-  <li><strong>Dades:</strong> les dades dels socis són propietat del club, que és el responsable del tractament. El prestador actua com a encarregat del tractament i signarà el contracte corresponent.</li>
-  <li><strong>Propietat i llicència:</strong> el club rep una llicència d'ús de l'aplicació per al seu gimnàs. El codi font es manté propietat del prestador, tret de pacte en contra. El logo i la marca del club són del club.</li>
-  <li><strong>Manteniment:</strong> durada mínima de 12 mesos i preavís de 30 dies per cancel·lar. Cobreix el que s'indica a l'apartat 2; la resta es pressuposta a part (tarifa orientativa de 40–50 €/hora).</li>
-  <li><strong>Pilot:</strong> el primer termini de manteniment comença en acabar el pilot.</li>
-  <li><strong>Dades reals:</strong> no es carregaran dades personals reals de socis fins que el club hagi aprovat el prototip i s'hagi completat la revisió legal.</li>
+  <li>Les dades dels socis són del club, que n'és el responsable; el prestador actua com a encarregat del tractament.</li>
+  <li>El club disposa de l'aplicació per al seu gimnàs; el logo i la marca són sempre del club.</li>
+  <li>Manteniment amb una durada mínima orientativa de 12 mesos i preavís de 30 dies per cancel·lar; el primer termini comença en acabar el pilot.</li>
+  <li>Fins que el club aprovi el prototip, l'aplicació només conté dades fictícies.</li>
 </ul>
-
-<div class="sign"><div>Pel Club Poliesportiu Santjoanenc<br>Nom, càrrec i data</div><div>Pel prestador<br>Nom i data</div></div>
-<footer>CPS Fit · Proposta econòmica · Els imports i les condicions són una proposta i es poden negociar.</footer>
-</body></html>
+<footer>Proposta orientativa, oberta a comentaris i ajustos. No constitueix un contracte.</footer>
+</div></body></html>
