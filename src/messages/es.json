@@ -1,0 +1,158 @@
+{
+  "brand": { "tagline": "Tu entrenamiento, en tu club.", "club": "Club Poliesportiu Santjoanenc · Sant Joan les Fonts" },
+  "common": {
+    "and": "y", "back": "Volver", "delete": "Eliminar", "edit": "Editar", "filter": "Filtrar", "loading": "Cargando…",
+    "save": "Guardar", "search": "Buscar"
+  },
+  "theme": { "label": "Tema", "light": "Claro", "dark": "Oscuro", "system": "Automático" },
+  "status": { "label": "Estado", "active": "Activo", "pending": "Pendiente de validar", "paused": "En pausa", "inactive": "Baja" },
+  "nav": { "home": "Inicio", "routine": "Rutina", "progress": "Progreso", "club": "Club", "profile": "Perfil" },
+  "auth": {
+    "email": "Correo electrónico", "password": "Contraseña", "passwordNew": "Contraseña (mínimo 8 caracteres)", "fullName": "Nombre y apellidos",
+    "signIn": "Entrar", "register": "Crea tu cuenta", "noAccount": "¿Aún no tienes cuenta?", "haveAccount": "¿Ya tienes cuenta?",
+    "magicLink": "Enviarme un enlace por correo", "magicSent": "Te hemos enviado un enlace de acceso a {email}. Ábrelo desde este dispositivo.",
+    "magicError": "No hemos podido enviar el enlace. Comprueba que el correo esté registrado.", "emailFirst": "Escribe primero tu correo.",
+    "invalid": "Correo o contraseña incorrectos.", "checkEmail": "Revisa tu correo",
+    "registerTitle": "Alta de socio", "registerHint": "Crea tu cuenta para acceder a tu rutina.",
+    "createAccount": "Crear cuenta", "passwordShort": "La contraseña debe tener al menos 8 caracteres.",
+    "consentRequired": "Debes aceptar la política de privacidad para continuar.",
+    "consentText": "Acepto el tratamiento de mis datos de salud y forma física para gestionar mi rutina de entrenamiento, según la",
+    "pendingValidation": "Hemos enviado un correo de confirmación. Una vez confirmado, el club validará tu alta y el monitor podrá asignarte una rutina.",
+    "registered": "Cuenta creada. Ya puedes entrar."
+  },
+  "legal": {
+    "privacyTitle": "Política de privacidad", "termsTitle": "Términos de uso",
+    "draftNotice": "Borrador de ejemplo pendiente de revisión legal. No es un texto definitivo.",
+    "privacy": {
+      "controller": { "title": "Responsable del tratamiento", "body": "{club}. Contacto para cualquier cuestión de privacidad: {email}." },
+      "data": { "title": "Qué datos tratamos", "body": "Nombre, correo, objetivo y nivel de entrenamiento, lesiones o limitaciones que decidas compartir, rutinas, entrenamientos registrados, medidas corporales y, opcionalmente, fotos de progreso. Son datos relacionados con la salud: solo recogemos el mínimo necesario." },
+      "purpose": { "title": "Para qué los usamos", "body": "Únicamente para crear y seguir tu rutina de entrenamiento en el gimnasio y para que tu monitor pueda asesorarte. No usamos analítica de terceros que te identifique ni vendemos datos." },
+      "legal": { "title": "Base legal", "body": "Tu consentimiento explícito, que puedes retirar en cualquier momento desde tu perfil." },
+      "retention": { "title": "Conservación", "body": "Mientras seas socio. Cuando te des de baja o elimines la cuenta, borramos tus datos." },
+      "rights": { "title": "Tus derechos", "body": "Acceso, rectificación, supresión, limitación, oposición y portabilidad. Desde el perfil puedes descargar todos tus datos y eliminar la cuenta de forma inmediata." },
+      "security": { "title": "Seguridad", "body": "Los datos se almacenan en la Unión Europea con acceso restringido por rol: cada socio solo ve sus datos y cada monitor solo los de sus socios asignados." },
+      "processors": { "title": "Encargados del tratamiento", "body": "Proveedor de infraestructura (base de datos y autenticación) con servidores en la UE. Ningún otro tercero recibe tus datos." }
+    },
+    "terms": {
+      "service": { "title": "El servicio", "body": "Esta aplicación es una herramienta de {club} para digitalizar las rutinas del gimnasio. No sustituye el sistema de reservas ni de pagos del club." },
+      "health": { "title": "Salud y responsabilidad", "body": "Las rutinas son orientativas. Comunica al monitor cualquier lesión o condición médica antes de entrenar y detén el ejercicio si sientes dolor." },
+      "account": { "title": "Tu cuenta", "body": "Eres responsable de mantener tu contraseña en secreto. El club puede validar, pausar o dar de baja cuentas." },
+      "content": { "title": "Contenido", "body": "Las notas y comentarios que escribas serán visibles para tu monitor. No incluyas datos de otras personas." },
+      "liability": { "title": "Limitación de responsabilidad", "body": "{club} no se hace responsable de un uso inadecuado de las rutinas. Texto de ejemplo, pendiente de revisión legal." }
+    }
+  },
+  "member": {
+    "pendingBanner": "Tu alta está pendiente de validación por el club. Ya puedes explorar la app; el monitor te asignará una rutina pronto.",
+    "greetMorning": "Buenos días", "greetAfternoon": "Buenas tardes", "greetEvening": "Buenas noches",
+    "todaySession": "Sesión de hoy", "exerciseCount": "{n, plural, one {# ejercicio} other {# ejercicios}}", "startWorkout": "Empezar entrenamiento",
+    "noRoutineTitle": "Aún no tienes rutina", "noRoutineHint": "Tu monitor te asignará una, o puedes crear la tuya ahora mismo.", "createRoutine": "Crear una rutina",
+    "weekSummary": "Resumen semanal", "streak": "Racha", "weeksInRow": "{n, plural, one {semana seguida} other {semanas seguidas}}", "thisWeek": "Esta semana",
+    "announcements": "Avisos del gimnasio", "pinned": "Destacado",
+    "myRoutines": "Mis rutinas", "newRoutinePlaceholder": "Nombre de la nueva rutina", "create": "Crear",
+    "dayCount": "{n, plural, one {# día} other {# días}}", "activeRoutine": "Activa", "fromTrainer": "Del monitor", "makeActive": "Hacerla activa",
+    "duplicate": "Duplicar", "deleteRoutine": "Eliminar esta rutina",
+    "syncing": "Sincronizando {n, plural, one {# entrenamiento} other {# entrenamientos}}…", "offline": "Sin conexión", "offlinePending": "Sin conexión · {n, plural, one {# entrenamiento pendiente} other {# entrenamientos pendientes}} de enviar"
+  },
+  "routine": {
+    "active": "Rutina activa", "weeks": "{n, plural, one {# semana} other {# semanas}}", "until": "hasta el {date}", "myRoutines": "Mis rutinas",
+    "next": "Toca hoy", "rest": "descanso", "doubts": "Dudas y comentarios", "noComments": "Escribe a tu monitor si tienes cualquier duda sobre la rutina.",
+    "writeComment": "Escribe un comentario…", "send": "Enviar", "you": "Tú"
+  },
+  "workout": {
+    "noRoutine": "No hay ninguna rutina para entrenar", "noRoutineHint": "Abre la app con conexión una vez para descargar tu rutina.",
+    "exit": "Salir", "elapsed": "Tiempo transcurrido", "finish": "Terminar", "progress": "Progreso del entrenamiento", "exerciseOf": "Ejercicio {i} de {n}",
+    "tips": "Consejos de ejecución", "skipped": "Ejercicio saltado", "undo": "Deshacer", "addSet": "Añadir serie", "skip": "Saltar", "swap": "Sustituir",
+    "note": "Nota", "notePlaceholder": "Sensaciones, molestias, ajustes…", "rest": "Descanso", "skipRest": "Saltar", "prev": "Ejercicio anterior", "next": "Siguiente",
+    "seriesShort": "series", "set": "Serie", "markDone": "Marcar serie como hecha", "removeSet": "Eliminar serie", "last": "Última", "seconds": "Tiempo", "reps": "Repeticiones",
+    "exitTitle": "¿Salir del entrenamiento?", "exitBody": "El entrenamiento en curso se guarda en el móvil: puedes continuarlo más tarde.", "keepGoing": "Seguir entrenando", "saveAndExit": "Guardar y salir", "discard": "Descartar entrenamiento",
+    "unfinishedTitle": "Quedan series sin hacer", "unfinishedBody": "Aún te {n, plural, one {queda # serie} other {quedan # series}}. ¿Quieres terminar igualmente?", "finishAnyway": "Terminar igualmente",
+    "swapTitle": "Sustituir ejercicio", "searchExercise": "Busca un ejercicio…", "needsConnection": "Se necesita conexión para buscar ejercicios.", "cancel": "Cancelar",
+    "doneTitle": "¡Entrenamiento completado!", "duration": "Duración", "volume": "Volumen", "seriesDone": "Series", "records": "¡Récords personales!",
+    "pr": { "weight": "Peso máximo", "e1rm": "1RM estimado", "volume": "Volumen" },
+    "savedOnline": "Entrenamiento guardado correctamente.", "savedOffline": "Sin conexión: el entrenamiento se ha guardado en el móvil y se enviará automáticamente cuando vuelvas a tener cobertura.", "backHome": "Volver al inicio"
+  },
+  "progress": {
+    "title": "Progreso", "tabSessions": "Entrenos", "tabExercises": "Ejercicios", "tabRecords": "Récords", "tabBody": "Cuerpo",
+    "calendar": "Calendario de entrenos", "prevMonth": "Mes anterior", "nextMonth": "Mes siguiente", "monthCount": "{n, plural, one {# entreno} other {# entrenos}} este mes", "sets": "series",
+    "noSessions": "Aún no hay entrenos", "noSessionsHint": "Cuando termines el primer entrenamiento, aquí verás tu calendario y tu evolución.", "noData": "Sin datos que mostrar",
+    "exercise": "Ejercicio", "metric": "Métrica", "e1rm": "1RM estimado", "maxWeight": "Peso máximo", "volume": "Volumen", "chart": "gráfica de evolución",
+    "noRecords": "Aún no tienes récords", "noRecordsHint": "Cada vez que superes tu mejor peso en un ejercicio, aparecerá aquí.",
+    "weight": "Peso (kg)", "bodyFat": "% grasa", "waist": "Cintura (cm)", "chest": "Pecho (cm)", "hip": "Cadera (cm)", "arm": "Brazo (cm)", "thigh": "Muslo (cm)",
+    "addMeasurement": "Añadir medidas", "save": "Guardar", "weightChart": "Evolución del peso", "noMeasurements": "Sin medidas", "noMeasurementsHint": "Registra tu peso y perímetros para ver la evolución.",
+    "photos": "Fotos de progreso", "private": "Privadas", "photosHint": "Opcionales y privadas: solo las ves tú, salvo que actives compartirlas con el monitor en el perfil.", "photosTrainerHint": "Solo visibles porque el socio las comparte.",
+    "addPhoto": "Añadir foto", "photoError": "No se ha podido subir la foto (máximo 6 MB, JPG o PNG).", "photoOf": "Foto del {date}"
+  },
+  "club": {
+    "title": "El club", "openNow": "Abierto ahora", "closedNow": "Cerrado ahora", "trainerPresent": "Monitor en sala", "trainerAbsent": "Sin monitor ahora",
+    "hours": "Horario del gimnasio", "monFri": "Lunes a viernes", "sat": "Sábado", "sunHol": "Domingos y festivos",
+    "trainerHours": "Monitor de sala", "rooms": "Sala de musculación y fitness de {a} m² (cardio y musculación) y sala de {b} m² para actividades dirigidas, estiramientos y ciclo indoor virtual.",
+    "rules": "Normas de la sala", "rulesDraft": "Normas orientativas; el club puede actualizarlas.",
+    "rule": { "towel": "Lleva siempre una toalla y úsala en las máquinas.", "shoes": "Calzado deportivo limpio y ropa cómoda obligatorios.", "clean": "Limpia el aparato al terminar.", "weights": "Deja los pesos y el material en su sitio.", "bag": "Deja las bolsas en las taquillas.", "phone": "Respeta a los demás: sin llamadas ni música sin auriculares." },
+    "contact": "Contacto", "website": "Web del club", "bookings": "Reservas y área privada del club", "bookingsHint": "Las reservas de clases y los pagos se gestionan en el sistema del club, no en esta app."
+  },
+  "profile": {
+    "title": "Perfil", "data": "Mis datos", "name": "Nombre", "email": "Correo", "goal": "Objetivo", "level": "Nivel", "daysPerWeek": "Días por semana",
+    "levels": { "beginner": "Principiante", "intermediate": "Intermedio", "advanced": "Avanzado" },
+    "limitations": "Lesiones o limitaciones", "limitationsHint": "Solo lo ve tu monitor",
+    "preferences": "Preferencias", "language": "Idioma", "theme": "Tema", "units": "Unidades de peso", "restAlert": "Aviso al terminar el descanso", "restAlertHint": "Sonido y vibración",
+    "sharePhotos": "Compartir fotos con el monitor", "sharePhotosHint": "Por defecto son privadas", "save": "Guardar cambios", "saved": "Guardado ✓",
+    "privacy": "Privacidad y datos", "privacyHint": "Tus datos son tuyos: puedes descargarlos o eliminar la cuenta cuando quieras.", "export": "Descargar mis datos",
+    "deleteAccount": "Eliminar mi cuenta", "deleteConfirm": "Esto borrará tu cuenta y todos tus datos de forma definitiva.", "deleteNow": "Sí, eliminar", "cancel": "Cancelar", "deleteError": "No se ha podido eliminar la cuenta. Contacta con el club.", "signOut": "Cerrar sesión"
+  },
+  "onboarding": {
+    "title": "¡Hola, {name}!", "hint": "Cuatro preguntas rápidas para que el monitor te prepare la rutina ideal.",
+    "goal": "¿Cuál es tu objetivo?", "goals": { "strength": "Ganar fuerza", "fatLoss": "Perder grasa", "muscle": "Ganar masa muscular", "health": "Mejorar la salud", "tone": "Tonificar", "race": "Preparar una carrera" },
+    "level": "Tu nivel", "levels": { "beginner": "Principiante", "intermediate": "Intermedio", "advanced": "Avanzado" }, "days": "Días por semana que quieres entrenar",
+    "limitations": "Lesiones o limitaciones (opcional)", "limitationsHint": "Ej.: molestia en la rodilla, hernia discal…", "limitationsPrivacy": "Solo lo verá tu monitor, para adaptar los ejercicios.", "finish": "¡Empezamos!"
+  },
+  "editor": {
+    "name": "Nombre de la rutina", "goal": "Objetivo", "weeks": "Duración (semanas)", "description": "Descripción", "days": "Días", "day": "Día", "addDay": "Añadir día", "dayName": "Nombre del día",
+    "duplicateDay": "Duplicar día", "removeDay": "Eliminar día", "exercises": "Ejercicios del día", "emptyDay": "Añade ejercicios desde la biblioteca.",
+    "library": "Biblioteca de ejercicios", "searchExercise": "Busca ejercicio o material…", "muscle": "Grupo muscular", "allMuscles": "Todos los grupos", "add": "Añadir", "noResults": "Sin resultados",
+    "drag": "Arrastra para reordenar", "moveUp": "Subir", "moveDown": "Bajar", "sets": "Series", "mode": "Tipo", "byReps": "Por repeticiones", "byTime": "Por tiempo", "durationSec": "Duración (s)",
+    "repsMin": "Reps mín.", "repsMax": "Reps máx.", "targetWeight": "Peso objetivo (kg)", "rest": "Descanso (s)", "setType": "Tipo de serie", "supersetGroup": "Grupo de superserie", "notes": "Notas",
+    "removeExercise": "Quitar de la rutina", "save": "Guardar rutina", "saveVersion": "Guardar como nueva versión", "saved": "Rutina guardada ✓", "saveError": "No se ha podido guardar.",
+    "type": { "normal": "Normal", "warmup": "Calentamiento", "dropset": "Dropset", "superset": "Superserie" }
+  },
+  "admin": {
+    "skip": "Saltar al contenido", "roleAdmin": "Administración del club", "roleTrainer": "Monitor de sala",
+    "nav": { "label": "Panel", "dashboard": "Inicio", "members": "Socios", "routines": "Rutinas", "exercises": "Ejercicios", "comments": "Comentarios", "announcements": "Avisos", "trainers": "Monitores" },
+    "dashboard": {
+      "title": "Inicio", "hello": "Hola, {name}. Esto es lo que pasa en el gimnasio.", "summary": "Resumen", "activeMembers": "Socios activos", "ofTotal": "de {n} en total", "today": "Hoy", "thisWeek": "Esta semana",
+      "workouts": "entrenos", "inactive": "Sin venir {n}+ días", "members": "socios", "last14": "Entrenos de los últimos 14 días", "noShow": "Socios que llevan días sin venir",
+      "noneInactive": "Todos han venido esta semana. 💪", "never": "Nunca", "daysAgo": "hace {n} d", "expiring": "Rutinas que caducan", "noneExpiring": "Ninguna rutina caduca pronto.", "expired": "Caducada", "inDays": "en {n} d",
+      "unanswered": "Comentarios sin responder", "noneUnanswered": "Todo al día."
+    },
+    "members": {
+      "count": "{n, plural, one {# socio} other {# socios}}", "invite": "Invitar socio", "inviteNoKey": "Para enviar invitaciones por correo hay que configurar SUPABASE_SERVICE_ROLE_KEY en el servidor. Mientras tanto, los socios pueden registrarse solos y la administración los validará.",
+      "inviteSent": "Invitación enviada. El socio recibirá un correo para establecer la contraseña.", "inviteAdminHint": "Quedará pendiente de asignar a un monitor.", "sendInvite": "Enviar invitación", "close": "Cerrar", "name": "Nombre", "goal": "Objetivo", "routine": "Rutina", "lastWorkout": "Último entreno", "status": "Estado", "today": "Hoy",
+      "searchPlaceholder": "Busca por nombre o correo…", "allStatuses": "Todos los estados", "empty": "Aún no hay socios", "emptyHint": "Invita al primer socio o espera a que se registren."
+    },
+    "member": {
+      "since": "socio desde el {date}", "daysWeek": "{n} días/semana", "limitations": "Lesiones o limitaciones", "last30": "Entrenos (30 días)", "adherence": "Adherencia", "lastWorkout": "Último entreno", "records": "Récords",
+      "activeRoutine": "Rutina activa", "noRoutine": "Este socio no tiene ninguna rutina activa.", "editRoutine": "Editar rutina", "assignTemplate": "Asignar plantilla", "weeks": "Semanas", "start": "Inicio", "assign": "Asignar", "assigned": "Asignada ✓",
+      "progress": "Seguimiento", "notes": "Notas del monitor", "goal": "Objetivo", "privateNotes": "Notas privadas (el socio no las ve)", "save": "Guardar", "saved": "Guardado ✓", "comments": "Comentarios", "label": "Estado"
+    },
+    "routines": {
+      "templates": "Plantillas", "members": "Rutinas de socios", "archived": "Archivadas", "newPlaceholder": "Nombre de la plantilla", "newTemplate": "Nueva plantilla", "empty": "No hay rutinas en esta lista.",
+      "archive": "Archivar", "restore": "Restaurar", "templateLabel": "Plantilla", "ofMember": "Rutina de {name}", "activeAssignments": "{n, plural, one {# socio la tiene activa} other {# socios la tienen activa}}",
+      "assignTitle": "Asignar a socios", "assignHint": "Se crea una copia personal para cada socio, así puedes adaptarla sin afectar a las demás.", "start": "Inicio", "durationWeeks": "Duración (semanas)", "assign": "Asignar", "assignedN": "Asignada a {n, plural, one {# socio} other {# socios}}", "assignError": "No se ha podido asignar."
+    },
+    "exercises": {
+      "count": "{n} ejercicios en la biblioteca", "search": "Busca por nombre o material…", "allMuscles": "Todos los grupos", "new": "Nuevo ejercicio", "edit": "Editar ejercicio", "none": "Ningún ejercicio coincide.",
+      "name": "Nombre", "nameCa": "Nombre (catalán)", "nameEs": "Nombre (castellano)", "muscle": "Grupo muscular", "secondary": "Músculos secundarios (separados por comas)", "equipment": "Material / máquina", "level": "Nivel", "tags": "Etiquetas",
+      "timed": "Ejercicio por tiempo (cardio, planchas…)", "descriptionCa": "Descripción (catalán)", "descriptionEs": "Descripción (castellano)", "tipsCa": "Consejos de ejecución (catalán)", "tipsEs": "Consejos de ejecución (castellano)",
+      "mistakesCa": "Errores comunes (catalán)", "mistakesEs": "Errores comunes (castellano)", "media": "Imagen, GIF o vídeo", "mediaUrl": "URL del contenido", "upload": "Subir archivo", "delete": "Eliminar", "cancel": "Cancelar", "save": "Guardar",
+      "inUse": "Este ejercicio se usa en rutinas o entrenamientos y no se puede eliminar."
+    },
+    "announcements": {
+      "new": "Nuevo aviso", "titleCa": "Título (catalán)", "titleEs": "Título (castellano)", "bodyCa": "Texto (catalán)", "bodyEs": "Texto (castellano)", "from": "Visible desde", "until": "Hasta", "pin": "Destacar en el inicio", "publish": "Publicar aviso",
+      "empty": "Aún no hay avisos.", "state": { "live": "Visible", "scheduled": "Programado", "expired": "Caducado" }
+    },
+    "comments": { "empty": "Aún no hay comentarios.", "waiting": "Espera respuesta", "resolve": "Marcar resuelto" },
+    "trainers": {
+      "memberCount": "{n, plural, one {# socio} other {# socios}}", "noKey": "Para invitar monitores por correo hay que configurar SUPABASE_SERVICE_ROLE_KEY. Mientras tanto, crea el usuario en Supabase Auth y asigna el rol 'trainer'.",
+      "pending": "Altas pendientes de validar", "noPending": "No hay altas pendientes.", "assignTo": "Asignar a", "validate": "Validar alta", "reassign": "Monitor asignado a cada socio", "trainer": "Monitor"
+    }
+  }
+}
