@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { getLocale, getTranslations } from 'next-intl/server'
-import { AlertTriangle, CalendarClock, MessageSquare } from 'lucide-react'
+import { AlertTriangle, CalendarClock, CalendarDays, Dumbbell, MessageSquare, Users } from 'lucide-react'
 import { requireRole } from '@/lib/auth'
 import { createClient } from '@/lib/supabase/server'
 import { Stat, EmptyState } from '@/components/ui'
@@ -66,10 +66,10 @@ export default async function AdminDashboard() {
       </header>
 
       <section className="grid grid-cols-2 gap-3 lg:grid-cols-4" aria-label={t('admin.dashboard.summary')}>
-        <Stat label={t('admin.dashboard.activeMembers')} value={active.length} hint={t('admin.dashboard.ofTotal', { n: members.length })} />
-        <Stat label={t('admin.dashboard.today')} value={today} hint={t('admin.dashboard.workouts')} />
-        <Stat label={t('admin.dashboard.thisWeek')} value={week} hint={t('admin.dashboard.workouts')} />
-        <Stat label={t('admin.dashboard.inactive', { n: INACTIVE_DAYS })} value={inactive.length} tone={inactive.length ? 'warn' : undefined} hint={t('admin.dashboard.members')} />
+        <Stat icon={<Users size={16} />} label={t('admin.dashboard.activeMembers')} value={active.length} hint={t('admin.dashboard.ofTotal', { n: members.length })} />
+        <Stat icon={<Dumbbell size={16} />} label={t('admin.dashboard.today')} value={today} hint={t('admin.dashboard.workouts')} />
+        <Stat icon={<CalendarDays size={16} />} label={t('admin.dashboard.thisWeek')} value={week} hint={t('admin.dashboard.workouts')} />
+        <Stat icon={<AlertTriangle size={16} />} label={t('admin.dashboard.inactive', { n: INACTIVE_DAYS })} value={inactive.length} tone={inactive.length ? 'warn' : undefined} hint={t('admin.dashboard.members')} />
       </section>
 
       <section className="card p-4" aria-labelledby="chart">

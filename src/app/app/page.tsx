@@ -8,6 +8,7 @@ import { buildSnapshot } from '@/lib/snapshot'
 import { startOfWeek, volume, weeklyStreak } from '@/lib/training'
 import type { Announcement } from '@/lib/types'
 import { EmptyState } from '@/components/ui'
+import { InstallPrompt } from '@/components/install-prompt'
 import { SnapshotSaver } from './snapshot-saver'
 
 export default async function MemberHome() {
@@ -53,7 +54,7 @@ export default async function MemberHome() {
       </section>
 
       {day && snapshot.routine ? (
-        <section className="animate-rise overflow-hidden rounded-3xl bg-primary p-5 text-primary-fg shadow-card" style={{ animationDelay: '60ms' }}>
+        <section className="hero-brand stripes hero-emblem glow animate-rise relative overflow-hidden rounded-3xl p-5" style={{ animationDelay: '60ms' }}>
           <p className="text-xs font-bold uppercase tracking-widest">{t('member.todaySession')}</p>
           <h2 className="font-display mt-1 text-4xl font-extrabold uppercase leading-none">{day.name}</h2>
           <p className="mt-1 text-sm">{snapshot.routine.name} · {t('member.exerciseCount', { n: day.exercises.length })}</p>
@@ -75,6 +76,8 @@ export default async function MemberHome() {
           action={<Link href="/app/rutines" className="btn btn-primary">{t('member.createRoutine')}</Link>}
         />
       )}
+
+      <InstallPrompt />
 
       <section className="grid grid-cols-2 gap-3" aria-label={t('member.weekSummary')}>
         <div className="card animate-rise p-4" style={{ animationDelay: '120ms' }}>

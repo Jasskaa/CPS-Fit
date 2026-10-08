@@ -555,5 +555,24 @@
       "title": "Disponible solo en ordenador",
       "body": "El panel del monitor y la administración están pensados para pantalla grande. Abre esta dirección desde un ordenador o una tableta. Para entrenar, usa la app del socio."
     }
+  },
+  "install": {
+    "title": "Instala CPS Fit",
+    "body": "Acceso directo desde la pantalla de inicio y funciona sin cobertura.",
+    "button": "Instalar la app",
+    "dismiss": "Ahora no",
+    "installed": "App instalada en este dispositivo",
+    "iosButton": "Cómo instalarla en el iPhone",
+    "ios1": "Toca el botón Compartir de Safari",
+    "ios2": "Elige «Añadir a pantalla de inicio»",
+    "ios3": "Confirma con «Añadir» y abre CPS Fit desde el icono"
+  },
+  "errors": {
+    "title": "Algo ha fallado",
+    "body": "Lo sentimos, no hemos podido mostrar esta pantalla. Inténtalo de nuevo.",
+    "retry": "Reintentar",
+    "home": "Ir al inicio",
+    "notFoundTitle": "Página no encontrada",
+    "notFoundBody": "Esta dirección no existe o se ha movido."
   }
 }

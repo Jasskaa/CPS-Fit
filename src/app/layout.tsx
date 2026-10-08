@@ -5,6 +5,7 @@ import { getLocale, getMessages } from 'next-intl/server'
 import { APP_NAME, APP_TAGLINE } from '@/lib/config'
 import { ThemeScript } from '@/components/theme'
 import { RegisterSW } from '@/components/register-sw'
+import splash from '@/lib/splash.json'
 import './globals.css'
 
 const display = Barlow_Condensed({ subsets: ['latin'], weight: ['500', '600', '700', '800'], variable: '--font-barlow' })
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   applicationName: APP_NAME,
   manifest: '/manifest.webmanifest',
   icons: { icon: '/icons/icon-192.png', apple: '/icons/apple-touch-icon.png' },
-  appleWebApp: { capable: true, title: APP_NAME, statusBarStyle: 'black-translucent' },
+  appleWebApp: { capable: true, title: APP_NAME, statusBarStyle: 'black-translucent', startupImage: splash },
 }
 
 export const viewport: Viewport = {

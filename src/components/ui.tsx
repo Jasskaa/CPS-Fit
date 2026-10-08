@@ -62,12 +62,18 @@ export function EmptyState({
   )
 }
 
-export function Stat({ label, value, hint, tone }: { label: string; value: React.ReactNode; hint?: string; tone?: 'warn' | 'good' }) {
+export function Stat({ label, value, hint, tone, icon }: { label: string; value: React.ReactNode; hint?: string; tone?: 'warn' | 'good'; icon?: React.ReactNode }) {
   return (
-    <div className="card p-4">
-      <p className="text-xs font-semibold uppercase tracking-wide text-muted">{label}</p>
-      <p className={`font-display mt-1 text-4xl font-extrabold tnum ${tone === 'warn' ? 'text-danger' : ''}`}>{value}</p>
-      {hint && <p className="mt-0.5 text-xs text-muted">{hint}</p>}
+    <div className="card relative overflow-hidden p-4">
+      <span aria-hidden className={`absolute inset-y-0 left-0 w-1 ${tone === 'warn' ? 'bg-danger' : 'bg-primary'}`} />
+      <div className="flex items-start justify-between gap-2">
+        <p className="text-xs font-semibold uppercase tracking-wide text-muted">{label}</p>
+        {icon && (
+          <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg ${tone === 'warn' ? 'bg-danger-soft text-danger' : 'bg-primary-soft text-primary-text'}`}>{icon}</span>
+        )}
+      </div>
+      <p className={`font-display mt-1 text-5xl font-extrabold leading-none tnum ${tone === 'warn' ? 'text-danger' : ''}`}>{value}</p>
+      {hint && <p className="mt-1 text-xs text-muted">{hint}</p>}
     </div>
   )
 }

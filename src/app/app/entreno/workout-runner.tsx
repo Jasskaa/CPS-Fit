@@ -199,8 +199,13 @@ export function WorkoutRunner() {
 
   if (state === 'summary' && summary) {
     return (
-      <div className="mx-auto flex min-h-dvh max-w-lg flex-col gap-5 px-5 pb-10 pt-[max(2rem,env(safe-area-inset-top))]">
-        <div className="animate-pop text-center">
+      <div className="relative mx-auto flex min-h-dvh max-w-lg flex-col gap-5 overflow-hidden px-5 pb-10 pt-[max(2rem,env(safe-area-inset-top))]">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          {Array.from({ length: 22 }).map((_, i) => (
+            <span key={i} className="confetti-piece" style={{ left: `${(i * 4.7 + 3) % 100}%`, background: i % 3 === 0 ? 'var(--accent)' : i % 3 === 1 ? 'var(--primary)' : 'var(--text)', animationDelay: `${(i % 7) * 0.12}s` }} />
+          ))}
+        </div>
+        <div className="animate-pop relative text-center">
           <div className="mx-auto grid h-24 w-24 place-items-center rounded-full bg-accent text-accent-fg"><Check size={54} strokeWidth={3} aria-hidden /></div>
           <h1 className="font-display mt-4 text-5xl font-extrabold uppercase">{t('doneTitle')}</h1>
           <p className="text-muted">{draft.dayName}</p>

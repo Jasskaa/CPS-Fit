@@ -555,5 +555,24 @@
       "title": "Disponible només a ordinador",
       "body": "El panell del monitor i l'administració estan pensats per a pantalla gran. Obre aquesta adreça des d'un ordinador o una tauleta. Per entrenar, utilitza l'app del soci."
     }
+  },
+  "install": {
+    "title": "Instal·la CPS Fit",
+    "body": "Accés directe des de la pantalla d'inici i funciona sense cobertura.",
+    "button": "Instal·lar l'app",
+    "dismiss": "Ara no",
+    "installed": "App instal·lada en aquest dispositiu",
+    "iosButton": "Com instal·lar-la a l'iPhone",
+    "ios1": "Toca el botó Compartir de Safari",
+    "ios2": "Tria «Afegeix a la pantalla d'inici»",
+    "ios3": "Confirma amb «Afegeix» i obre CPS Fit des de la icona"
+  },
+  "errors": {
+    "title": "Alguna cosa ha fallat",
+    "body": "Ho sentim, no hem pogut mostrar aquesta pantalla. Torna-ho a provar.",
+    "retry": "Tornar-ho a provar",
+    "home": "Anar a l'inici",
+    "notFoundTitle": "Pàgina no trobada",
+    "notFoundBody": "Aquesta adreça no existeix o s'ha mogut."
   }
 }
