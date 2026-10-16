@@ -1,6 +1,6 @@
 // Marca y datos del club. Cambia APP_NAME aquí para renombrar la app en todas partes.
 export const APP_NAME = 'CPS Fit'
-export const APP_TAGLINE = { ca: 'El teu entrenament, al teu club.', es: 'Tu entrenamiento, en tu club.' }
+export const APP_TAGLINE = { ca: 'El teu club, a la butxaca.', es: 'Tu club, en el bolsillo.' }
 
 export const CLUB = {
   name: 'Club Poliesportiu Santjoanenc',

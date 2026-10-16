@@ -6,7 +6,7 @@ const emblem = await sharp('public/brand/emblem.png').resize(360).toBuffer()
 const list = []
 for (const [w, h, cw, ch, r] of sizes) {
   const file = `splash-${w}x${h}.png`
-  await sharp({ create: { width: w, height: h, channels: 4, background: '#090b16' } })
+  await sharp({ create: { width: w, height: h, channels: 4, background: '#06101d' } })
     .composite([{ input: emblem, gravity: 'center' }]).png({ compressionLevel: 9 }).toFile(`public/icons/${file}`)
   list.push({ url: `/icons/${file}`, media: `(device-width: ${cw}px) and (device-height: ${ch}px) and (-webkit-device-pixel-ratio: ${r}) and (orientation: portrait)` })
 }

@@ -1,45 +1,49 @@
 @import "tailwindcss";
 
 /*
-  Paleta extraída del logo oficial del C.P. Santjoanenc (public/brand/logo-cps.jpg):
-  azul eléctrico ≈ #2030FF, amarillo ≈ #F8F800, negro #000 y blanco.
-  Contraste AA verificado: blanco sobre azul 7.2:1 · negro sobre amarillo 18:1 ·
-  texto principal sobre fondo > 15:1 · texto atenuado > 6:1.
-  El amarillo solo se usa como relleno (con texto oscuro), nunca como texto sobre claro.
+  Identidad del C.P. Santjoanenc.
+  · Web oficial (cpsantjoanenc.org, medido con el navegador): fondo azul #263CB9, barra de menú celeste #AADBFF,
+    azul marino #003154, azul medio #0063A9. Titulares en League Spartan (geométrica, gruesa); texto en DIN Next
+    (tipografía de pago → se sustituye por Inter, de métricas parecidas y libre).
+  · Escudo (public/brand/logo-cps.jpg): azul eléctrico ≈ #2030FF, amarillo ≈ #F8F800, negro y blanco.
+  Primario = azul institucional de la web. El amarillo del escudo se usa solo como relleno con texto oscuro.
+  Contraste AA verificado (axe en E2E): blanco sobre #263CB9 = 8,6:1 · texto principal sobre fondo > 15:1.
 */
 :root {
-  --bg: #f5f6fb;
+  --bg: #f4f7fc;
   --surface: #ffffff;
-  --surface-2: #eceef8;
-  --text: #0b0d1a;
-  --muted: #545a74;
-  --border: #d9dcec;
-  --primary: #1f2fff;
+  --surface-2: #e9eef8;
+  --text: #06182b;
+  --muted: #475a72;
+  --border: #d3dcea;
+  --primary: #263cb9;
   --primary-fg: #ffffff;
-  --primary-text: #1a28d6;
-  --primary-soft: #e6e8ff;
+  --primary-text: #263cb9;
+  --primary-soft: #e6ebff;
+  --sky: #aadbff;
+  --navy: #003154;
   --accent: #f8f800;
-  --accent-fg: #0b0d1a;
+  --accent-fg: #06182b;
   --success: #0b7a45;
   --success-soft: #dcf5e8;
   --danger: #c3261f;
   --danger-soft: #fde4e2;
   --warn-soft: #fff6bf;
-  --shadow: 0 1px 2px rgb(11 13 26 / 0.06), 0 6px 20px -8px rgb(11 13 26 / 0.12);
+  --shadow: 0 1px 2px rgb(6 24 43 / 0.06), 0 6px 20px -8px rgb(6 24 43 / 0.14);
   color-scheme: light;
 }
 
 :root[data-theme="dark"] {
-  --bg: #090b16;
-  --surface: #12152a;
-  --surface-2: #1a1e39;
-  --text: #f1f2fa;
-  --muted: #a4a9c4;
-  --border: #272c4c;
-  --primary: #4557ff;
+  --bg: #06101d;
+  --surface: #0d1b2e;
+  --surface-2: #15273f;
+  --text: #eef3fb;
+  --muted: #a3b3c9;
+  --border: #223652;
+  --primary: #4f68e8;
   --primary-fg: #ffffff;
-  --primary-text: #9aa4ff;
-  --primary-soft: #1b2054;
+  --primary-text: #a8b8ff;
+  --primary-soft: #172551;
   --success: #4ade80;
   --success-soft: #0f2d1d;
   --danger: #ff7b73;
@@ -51,16 +55,16 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #090b16;
-    --surface: #12152a;
-    --surface-2: #1a1e39;
-    --text: #f1f2fa;
-    --muted: #a4a9c4;
-    --border: #272c4c;
-    --primary: #4557ff;
+    --bg: #06101d;
+    --surface: #0d1b2e;
+    --surface-2: #15273f;
+    --text: #eef3fb;
+    --muted: #a3b3c9;
+    --border: #223652;
+    --primary: #4f68e8;
     --primary-fg: #ffffff;
-    --primary-text: #9aa4ff;
-    --primary-soft: #1b2054;
+    --primary-text: #a8b8ff;
+    --primary-soft: #172551;
     --success: #4ade80;
     --success-soft: #0f2d1d;
     --danger: #ff7b73;
@@ -70,6 +74,10 @@
     color-scheme: dark;
   }
 }
+
+/* Modos de accesibilidad (perfil → Accesibilidad): texto grande y alto contraste. */
+:root[data-a11y~="large"] { font-size: 118%; }
+:root[data-a11y~="contrast"] { --muted: var(--text); --border: color-mix(in srgb, var(--text) 55%, transparent); }
 
 @theme inline {
   --color-bg: var(--bg);
@@ -89,8 +97,10 @@
   --color-danger: var(--danger);
   --color-danger-soft: var(--danger-soft);
   --color-warn-soft: var(--warn-soft);
+  --color-sky: var(--sky);
+  --color-navy: var(--navy);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-barlow), "Arial Narrow", ui-sans-serif, sans-serif;
+  --font-display: var(--font-spartan), "Arial Narrow", ui-sans-serif, sans-serif;
   --shadow-card: var(--shadow);
 }
 
@@ -101,7 +111,7 @@ body {
   font-family: var(--font-sans);
   -webkit-tap-highlight-color: transparent;
 }
-h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: 0.01em; }
+h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: -0.01em; font-weight: 800; }
 .tnum { font-variant-numeric: tabular-nums; }
 
 :focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
