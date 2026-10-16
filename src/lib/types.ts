@@ -1,4 +1,4 @@
-export type Role = 'admin' | 'trainer' | 'member'
+export type Role = 'admin' | 'board' | 'reception' | 'trainer' | 'coordinator' | 'coach' | 'member'
 export type MemberStatus = 'pending' | 'active' | 'paused' | 'inactive'
 export type Level = 'beginner' | 'intermediate' | 'advanced'
 export type SetKind = 'normal' | 'warmup' | 'dropset' | 'superset'

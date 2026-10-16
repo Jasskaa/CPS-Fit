@@ -1,6 +1,6 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "cps-fit-dev", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "--", "--port=3010"], "port": 3010 }
+    { "name": "cps-fit-dev", "runtimeExecutable": "node", "runtimeArgs": ["scripts/dev.mjs", "3010"], "port": 3010 }
   ]
 }

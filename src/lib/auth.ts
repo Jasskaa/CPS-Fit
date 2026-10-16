@@ -1,4 +1,5 @@
 import 'server-only'
+import { homeFor } from '@/lib/permissions'
 import { cache } from 'react'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
@@ -18,7 +19,7 @@ export async function requireRole(roles: Role[]) {
   const session = await getSessionProfile()
   if (!session) redirect('/login')
   if (!roles.includes(session.profile.role)) {
-    redirect(session.profile.role === 'member' ? '/app' : '/admin')
+    redirect(homeFor(session.profile.role))
   }
   return session
 }

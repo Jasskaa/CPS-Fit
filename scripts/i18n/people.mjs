@@ -1,0 +1,38 @@
+export default {
+  ca: { club: { people: {
+    title: 'Persones', count: '{n} persones', searchPh: 'Nom, correu, DNI…', allTypes: 'Tots els tipus', allStatus: 'Tots els estats', onlyDebt: 'Només amb deute', filter: 'Filtra',
+    cols: { person: 'Persona', age: 'Edat', type: 'Tipus de soci', household: 'Llar', status: 'Estat', debt: 'Deute' },
+    status: { active: 'Actiu', paused: 'Pausat', left: 'Baixa', prospect: 'Candidat' },
+    mstatus: { active: 'Vigent', pending: 'Pendent', paused: 'Pausada', ended: 'Finalitzada' },
+    noType: 'No és soci', years: '{n} anys', members: '{n} membres', empty: 'Cap persona coincideix', emptyHint: 'Prova de canviar els filtres.',
+    requests: 'Sol·licituds d’alta', approve: 'Aprova', reject: 'Rebutja', noRequests: 'No hi ha sol·licituds pendents.',
+    newPerson: 'Nova persona', first: 'Nom', last: 'Cognoms', birth: 'Data de naixement', email: 'Correu electrònic', phone: 'Telèfon', nationalId: 'DNI/NIE', address: 'Adreça', postal: 'Codi postal', consent: 'Ha donat el consentiment de dades (RGPD)', create: 'Crea la persona', created: 'Persona creada',
+    household: 'Llar familiar', noHousehold: 'Sense llar', memberType: 'Tipus de soci', nonMember: 'No és soci',
+    profile: {
+      overview: 'Fitxa', data: 'Dades personals', edit: 'Edita les dades', family: 'Família', membership: 'Soci', changeType: 'Canvia el tipus', since: 'Antiguitat des de {d}', feeYear: 'Quota anual', billable: 'Es factura al titular', notBillable: 'Inclòs a la quota familiar',
+      access: 'Accessos per zona', accessNow: 'Ara mateix', overrides: 'Excepcions', addOverride: 'Afegeix excepció', allow: 'Permet', deny: 'Denega', reason: 'Motiu', until: 'Fins al', zone: 'Zona',
+      bookings: 'Reserves', invoices: 'Factures', payments: 'Pagaments', timeline: 'Cronologia', passes: 'Bons i abonaments', teams: 'Equips', events: 'Esdeveniments', notes: 'Notes internes', consents: 'Consentiments', consentData: 'Tractament de dades', consentMarketing: 'Comunicacions comercials', consentAt: 'Signat el {d}', noConsent: 'Sense consentiment registrat',
+      bank: 'Domiciliació bancària', iban: 'IBAN', holder: 'Titular del compte', mandate: 'Mandat SEPA', noBank: 'Sense domiciliació', saveBank: 'Desa la domiciliació', ibanInvalid: 'IBAN no vàlid', hasDebt: 'Té factures vençudes', noData: 'Sense dades', last: 'Últims moviments', card: 'Carnet i QR', openCard: 'Veure carnet', usesLeft: '{n} usos', validUntil: 'Fins {d}', ageNow: '{n} anys', joined: 'Alta {d}', allowed: 'Accés permès', blocked: 'Accés bloquejat',
+      tl: { booking: 'Reserva', invoice: 'Factura', payment: 'Pagament', access: 'Accés', membership: 'Canvi de soci' },
+    },
+    reason: { ok: 'Accés permès', inactive: 'Persona inactiva', blocked: 'Bloquejat manualment', debt: 'Té deute pendent', no_rule: 'Sense regla per a la zona', denied: 'Zona no permesa pel seu tipus', closed: 'Fora d’horari o de temporada', needs_booking: 'Cal reserva ara', needs_pass: 'Cal bo vigent', capacity: 'Aforament complet' },
+  } } },
+  es: { club: { people: {
+    title: 'Personas', count: '{n} personas', searchPh: 'Nombre, correo, DNI…', allTypes: 'Todos los tipos', allStatus: 'Todos los estados', onlyDebt: 'Solo con deuda', filter: 'Filtrar',
+    cols: { person: 'Persona', age: 'Edad', type: 'Tipo de socio', household: 'Hogar', status: 'Estado', debt: 'Deuda' },
+    status: { active: 'Activo', paused: 'Pausado', left: 'Baja', prospect: 'Candidato' },
+    mstatus: { active: 'Vigente', pending: 'Pendiente', paused: 'Pausada', ended: 'Finalizada' },
+    noType: 'No es socio', years: '{n} años', members: '{n} miembros', empty: 'Ninguna persona coincide', emptyHint: 'Prueba a cambiar los filtros.',
+    requests: 'Solicitudes de alta', approve: 'Aprobar', reject: 'Rechazar', noRequests: 'No hay solicitudes pendientes.',
+    newPerson: 'Nueva persona', first: 'Nombre', last: 'Apellidos', birth: 'Fecha de nacimiento', email: 'Correo electrónico', phone: 'Teléfono', nationalId: 'DNI/NIE', address: 'Dirección', postal: 'Código postal', consent: 'Ha dado el consentimiento de datos (RGPD)', create: 'Crear persona', created: 'Persona creada',
+    household: 'Hogar familiar', noHousehold: 'Sin hogar', memberType: 'Tipo de socio', nonMember: 'No es socio',
+    profile: {
+      overview: 'Ficha', data: 'Datos personales', edit: 'Editar datos', family: 'Familia', membership: 'Socio', changeType: 'Cambiar tipo', since: 'Antigüedad desde {d}', feeYear: 'Cuota anual', billable: 'Se factura al titular', notBillable: 'Incluido en la cuota familiar',
+      access: 'Accesos por zona', accessNow: 'Ahora mismo', overrides: 'Excepciones', addOverride: 'Añadir excepción', allow: 'Permitir', deny: 'Denegar', reason: 'Motivo', until: 'Hasta', zone: 'Zona',
+      bookings: 'Reservas', invoices: 'Facturas', payments: 'Pagos', timeline: 'Cronología', passes: 'Bonos y abonos', teams: 'Equipos', events: 'Eventos', notes: 'Notas internas', consents: 'Consentimientos', consentData: 'Tratamiento de datos', consentMarketing: 'Comunicaciones comerciales', consentAt: 'Firmado el {d}', noConsent: 'Sin consentimiento registrado',
+      bank: 'Domiciliación bancaria', iban: 'IBAN', holder: 'Titular de la cuenta', mandate: 'Mandato SEPA', noBank: 'Sin domiciliación', saveBank: 'Guardar domiciliación', ibanInvalid: 'IBAN no válido', hasDebt: 'Tiene facturas vencidas', noData: 'Sin datos', last: 'Últimos movimientos', card: 'Carnet y QR', openCard: 'Ver carnet', usesLeft: '{n} usos', validUntil: 'Hasta {d}', ageNow: '{n} años', joined: 'Alta {d}', allowed: 'Acceso permitido', blocked: 'Acceso bloqueado',
+      tl: { booking: 'Reserva', invoice: 'Factura', payment: 'Pago', access: 'Acceso', membership: 'Cambio de socio' },
+    },
+    reason: { ok: 'Acceso permitido', inactive: 'Persona inactiva', blocked: 'Bloqueado manualmente', debt: 'Tiene deuda pendiente', no_rule: 'Sin regla para la zona', denied: 'Zona no permitida por su tipo', closed: 'Fuera de horario o de temporada', needs_booking: 'Hace falta reserva ahora', needs_pass: 'Hace falta bono vigente', capacity: 'Aforo completo' },
+  } } },
+}

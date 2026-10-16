@@ -27,7 +27,7 @@ export function LoginForm({ next }: { next?: string }) {
       setBusy(false)
       return
     }
-    router.replace(next && next.startsWith('/') ? next : '/app')
+    router.replace(next && next.startsWith('/') ? next : '/')
     router.refresh()
   }
 
@@ -38,7 +38,7 @@ export function LoginForm({ next }: { next?: string }) {
     const supabase = createClient()
     const { error } = await supabase.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: `${location.origin}/auth/callback?next=${encodeURIComponent(next ?? '/app')}`, shouldCreateUser: false },
+      options: { emailRedirectTo: `${location.origin}/auth/callback?next=${encodeURIComponent(next ?? '/')}`, shouldCreateUser: false },
     })
     setBusy(false)
     if (error) setError(t('auth.magicError'))

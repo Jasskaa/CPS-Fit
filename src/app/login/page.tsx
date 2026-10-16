@@ -1,3 +1,4 @@
+import { homeFor } from '@/lib/permissions'
 import { redirect } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 import { getSessionProfile } from '@/lib/auth'
@@ -8,7 +9,7 @@ import { LoginForm } from './login-form'
 export default async function LoginPage({ searchParams }: { searchParams: Promise<{ next?: string; registered?: string }> }) {
   const session = await getSessionProfile()
   const sp = await searchParams
-  if (session) redirect(session.profile.role === 'member' ? '/app' : '/admin')
+  if (session) redirect(homeFor(session.profile.role))
   const t = await getTranslations()
   return (
     <div className="relative min-h-dvh overflow-hidden">

@@ -24,13 +24,16 @@ for (const file of files) {
 }
 const flat = (o, p = '') => Object.entries(o).flatMap(([k, v]) => (typeof v === 'object' ? flat(v, `${p}${k}.`) : [`${p}${k}`]))
 const has = (o, key) => key.split('.').reduce((a, k) => (a && typeof a === 'object' ? a[k] : undefined), o) !== undefined
+const deep = (a, b) => { const o = { ...a }; for (const [k, v] of Object.entries(b)) o[k] = v && typeof v === 'object' && typeof a[k] === 'object' ? deep(a[k], v) : v; return o }
 let bad = 0
 for (const loc of ['ca', 'es']) {
-  const json = JSON.parse(readFileSync(`src/messages/${loc}.json`, 'utf8'))
+  const read = (f) => JSON.parse(readFileSync(f, 'utf8'))
+  const json = deep(read(`src/messages/${loc}.json`), read(`src/messages/club.${loc}.json`))
   for (const [k, f] of used) if (!has(json, k)) { console.log(`[${loc}] falta: ${k}  (${f})`); bad++ }
 }
-const ca = flat(JSON.parse(readFileSync('src/messages/ca.json', 'utf8')))
-const es = flat(JSON.parse(readFileSync('src/messages/es.json', 'utf8')))
+const both = (l) => deep(JSON.parse(readFileSync(`src/messages/${l}.json`, 'utf8')), JSON.parse(readFileSync(`src/messages/club.${l}.json`, 'utf8')))
+const ca = flat(both('ca'))
+const es = flat(both('es'))
 ca.filter((k) => !es.includes(k)).forEach((k) => { console.log(`[es] sin traducir: ${k}`); bad++ })
 es.filter((k) => !ca.includes(k)).forEach((k) => { console.log(`[ca] sin traducir: ${k}`); bad++ })
 if (process.argv.includes('--list')) { console.log([...used.keys()].sort().join('\n')); console.log('\nDINÁMICAS:\n' + dynamic.join('\n')) }
