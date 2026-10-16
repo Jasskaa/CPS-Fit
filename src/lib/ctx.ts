@@ -1,14 +1,14 @@
 import 'server-only'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { requireRole } from '@/lib/auth'
-import { can, canWrite, STAFF_ROLES, type Module } from '@/lib/permissions'
+import { can, canWrite, homeFor, STAFF_ROLES, type Module } from '@/lib/permissions'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 
 /** Contexto común de las páginas del panel: exige permiso de lectura en el módulo. */
 export async function pageCtx(module: Module) {
   const session = await requireRole(STAFF_ROLES)
-  if (!can(session.profile.role, module)) redirect('/admin')
+  if (!can(session.profile.role, module)) redirect(homeFor(session.profile.role))
   const [t, locale, supabase] = await Promise.all([getTranslations(), getLocale(), createClient()])
   return { ...session, t, locale, supabase, writable: canWrite(session.profile.role, module) }
 }

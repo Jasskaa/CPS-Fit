@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { AlertTriangle, CalendarClock, Euro, Inbox, Users, Wrench } from 'lucide-react'
 import { pageCtx, pick } from '@/lib/ctx'
+import { requireRole } from '@/lib/auth'
+import { STAFF_ROLES } from '@/lib/permissions'
 import { clubParts, eur, fmtDate, fmtTime } from '@/lib/format'
 import { Section } from '@/components/club-ui'
 import { Stat } from '@/components/ui'
@@ -12,6 +14,8 @@ import GymDashboard from './gym-dashboard'
 export const metadata = { title: 'Tauler' }
 
 export default async function AdminHome() {
+  const session = await requireRole(STAFF_ROLES)
+  if (session.profile.role === 'coordinator' || session.profile.role === 'coach') redirect('/admin/seccions')
   const { profile } = await pageCtx('dashboard')
   if (profile.role === 'trainer') return <GymDashboard />
   return <ClubDashboard />

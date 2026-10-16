@@ -280,8 +280,8 @@
     },
     "contact": "Contacto",
     "website": "Web del club",
-    "bookings": "Reservas y área privada del club",
-    "bookingsHint": "Las reservas de clases y los pagos se gestionan en el sistema del club, no en esta app."
+    "bookingsHint": "Las reservas de clases y los pagos se gestionan en el sistema del club, no en esta app.",
+    "bookingsTitle": "Reservas y área privada del club"
   },
   "profile": {
     "title": "Perfil",

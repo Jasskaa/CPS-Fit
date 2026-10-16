@@ -7,6 +7,7 @@ import { createClient } from '@/lib/supabase/server'
 import { STAFF_ROLES } from '@/lib/permissions'
 import { requireRole } from '@/lib/auth'
 import { validIban } from '@/modules/billing/sepa'
+import { checkEligibility, nextAutoType } from '@/modules/membership/rules'
 
 type R = { ok: boolean; error?: string; id?: string }
 
@@ -34,6 +35,20 @@ const personSchema = z.object({
 
 const nul = (v: string | undefined) => (v && v.length ? v : null)
 
+/** Comprueba las reglas del tipo de socio (edad, pareja, adulto responsable, antigüedad) contra la persona y su hogar. */
+async function eligibility(supabase: Awaited<ReturnType<typeof actionCtx>>['supabase'], typeCode: string, person: { birth_date: string; household_id: string | null; id?: string }, seniorityYears = 0) {
+  const { data: ty } = await supabase.from('membership_types').select('code, min_age, max_age, needs_adult_link, needs_pair, min_seniority_years, retiree').eq('code', typeCode).single()
+  if (!ty) return { ok: false, reasons: ['type'] }
+  let adult = false, pair = false
+  if (person.household_id) {
+    const { data: hh } = await supabase.from('people').select('id, birth_date, household_role').eq('household_id', person.household_id)
+    const others = (hh ?? []).filter((x) => x.id !== person.id)
+    adult = others.some((x) => x.household_role === 'holder' || x.household_role === 'partner')
+    pair = others.some((x) => x.household_role === 'partner' || x.household_role === 'holder')
+  }
+  return checkEligibility(ty, { birth_date: person.birth_date, seniority_years: seniorityYears, has_adult_link: adult, has_pair: pair })
+}
+
 export async function createPerson(fd: FormData): Promise<R> {
   const { supabase, userId } = await actionCtx('people')
   const p = personSchema.safeParse(Object.fromEntries(fd))
@@ -46,6 +61,8 @@ export async function createPerson(fd: FormData): Promise<R> {
   }).select('id').single()
   if (error || !data) return { ok: false, error: error?.message ?? 'error' }
   if (typeCode) {
+    const el = await eligibility(supabase, typeCode, { birth_date: p.data.birth_date, household_id: nul(String(fd.get('household_id') ?? '')), id: data.id })
+    if (!el.ok) { await supabase.from('people').delete().eq('id', data.id); return { ok: false, error: `rule:${el.reasons.join(',')}` } }
     const { data: ty } = await supabase.from('membership_types').select('id').eq('code', typeCode).single()
     if (ty) await supabase.from('memberships').insert({ person_id: data.id, type_id: ty.id, status: 'active', started_on: new Date().toISOString().slice(0, 10), seniority_since: new Date().toISOString().slice(0, 10), approved_by: userId })
   }
@@ -81,6 +98,12 @@ export async function changeMembership(personId: string, fd: FormData): Promise<
   const { data: ty } = await supabase.from('membership_types').select('id').eq('code', typeCode).single()
   if (!ty) return { ok: false, error: 'type' }
   const { data: cur } = await supabase.from('memberships').select('id, seniority_since, billable').eq('person_id', personId).eq('status', 'active').maybeSingle()
+  const { data: who } = await supabase.from('people').select('birth_date, household_id').eq('id', personId).single()
+  if (who) {
+    const years = cur?.seniority_since ? (Date.now() - new Date(cur.seniority_since).getTime()) / 31557600000 : 0
+    const el = await eligibility(supabase, typeCode, { ...who, id: personId }, years)
+    if (!el.ok) return { ok: false, error: `rule:${el.reasons.join(',')}` }
+  }
   if (cur) await supabase.from('memberships').update({ status: 'ended', ended_on: today }).eq('id', cur.id)
   const { error } = await supabase.from('memberships').insert({ person_id: personId, type_id: ty.id, status: 'active', started_on: today, seniority_since: cur?.seniority_since ?? today, billable: cur?.billable ?? true, approved_by: userId })
   revalidatePath(`/admin/persones/${personId}`)
@@ -132,4 +155,30 @@ export async function decideRequest(id: string, approve: boolean, reason?: strin
   await supabase.from('membership_requests').update({ status: approve ? 'approved' : 'rejected', decided_by: userId, decided_at: new Date().toISOString(), reason: reason ?? null }).eq('id', id)
   revalidatePath('/admin/persones')
   return { ok: true }
+}
+
+/** Cambios automáticos de categoría por cumpleaños: Adherit→Jove a los 18 y Jove→Individual a los 24. */
+export async function applyAutoTypeChanges(): Promise<R & { count?: number }> {
+  const { supabase, userId } = await actionCtx('people')
+  const { data: mems } = await supabase.from('memberships').select('id, person_id, seniority_since, billable, membership_types(code), people(birth_date)').eq('status', 'active')
+  const { data: types } = await supabase.from('membership_types').select('id, code')
+  const today = new Date().toISOString().slice(0, 10)
+  let count = 0
+  for (const m of mems ?? []) {
+    const code = (m.membership_types as unknown as { code: string }).code
+    const next = nextAutoType(code, (m.people as unknown as { birth_date: string }).birth_date)
+    const target = next && types?.find((x) => x.code === next)
+    if (!target) continue
+    await supabase.from('memberships').update({ status: 'ended', ended_on: today }).eq('id', m.id)
+    await supabase.from('memberships').insert({ person_id: m.person_id, type_id: target.id, status: 'active', started_on: today, seniority_since: m.seniority_since, billable: m.billable, approved_by: userId })
+    count++
+  }
+  revalidatePath('/admin/persones')
+  return { ok: true, count }
+}
+
+export async function previewAutoTypeChanges(): Promise<number> {
+  const { supabase } = await actionCtx('people')
+  const { data: mems } = await supabase.from('memberships').select('membership_types(code), people(birth_date)').eq('status', 'active')
+  return (mems ?? []).filter((m) => nextAutoType((m.membership_types as unknown as { code: string }).code, (m.people as unknown as { birth_date: string }).birth_date)).length
 }

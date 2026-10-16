@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useTransition } from 'react'
+import { createPortal } from 'react-dom'
 import { useRouter } from 'next/navigation'
 import { Command } from 'cmdk'
 import { useTranslations } from 'next-intl'
@@ -41,7 +42,7 @@ export function CommandPalette({ role }: { role: Role }) {
         <Search size={15} aria-hidden /> <span className="flex-1 truncate">{t('palette.open')}</span>
         <kbd className="rounded border border-border bg-surface px-1.5 text-[0.65rem]">⌘K</kbd>
       </button>
-      {open && (
+      {open && createPortal(
         <div className="fixed inset-0 z-[60] grid place-items-start bg-black/50 px-4 pt-[12vh] backdrop-blur-sm" onMouseDown={(e) => e.target === e.currentTarget && setOpen(false)}>
           <Command label={t('palette.open')} shouldFilter={false} className="card mx-auto w-full max-w-xl overflow-hidden !rounded-2xl">
             <div className="flex items-center gap-2 border-b border-border px-4">
@@ -68,7 +69,8 @@ export function CommandPalette({ role }: { role: Role }) {
               )}
             </Command.List>
           </Command>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   )

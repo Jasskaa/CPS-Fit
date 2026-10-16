@@ -48,7 +48,7 @@ export function ActionForm({ action, children, submit, className = 'space-y-3', 
         start(async () => {
           setError(null)
           const r = await action(fd)
-          if (r && !r.ok) { setError(r.error === 'invalid' ? t('error') : (r.error ?? t('error'))); return }
+          if (r && !r.ok) { setError(r.error === 'invalid' ? t('error') : r.error?.startsWith('rule:') ? r.error.slice(5).split(',').map((c) => t(`rule.${c}`)).join(' · ') : (r.error ?? t('error'))); return }
           router.refresh()
           close()
         })

@@ -65,7 +65,7 @@ export default async function ClubPage() {
       </section>
 
       <a href={CLUB.bookingUrl} target="_blank" rel="noreferrer" className="btn btn-accent btn-lg w-full">
-        <CalendarCheck aria-hidden /> {t('club.bookings')} <ExternalLink size={16} aria-hidden />
+        <CalendarCheck aria-hidden /> {t('club.bookingsTitle')} <ExternalLink size={16} aria-hidden />
       </a>
       <p className="px-2 text-center text-xs text-muted">{t('club.bookingsHint')}</p>
     </div>

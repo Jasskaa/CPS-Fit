@@ -30,6 +30,8 @@ let bad = 0
 for (const loc of ['ca', 'es']) {
   const read = (f) => JSON.parse(readFileSync(f, 'utf8'))
   const json = deep(read(`src/messages/${loc}.json`), read(`src/messages/club.${loc}.json`))
+  const get = (o, key) => key.split('.').reduce((a, k) => (a && typeof a === 'object' ? a[k] : undefined), o)
+  for (const [k, f] of used) if (get(json, k) && typeof get(json, k) === 'object' && !/\.raw\(/.test(f)) { console.log(`[${loc}] es un grupo, no un texto: ${k}  (${f})`); bad++ }
   for (const [k, f] of used) if (!has(json, k)) { console.log(`[${loc}] falta: ${k}  (${f})`); bad++ }
 }
 const both = (l) => deep(JSON.parse(readFileSync(`src/messages/${l}.json`, 'utf8')), JSON.parse(readFileSync(`src/messages/club.${l}.json`, 'utf8')))

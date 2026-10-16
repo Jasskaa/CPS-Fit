@@ -72,7 +72,16 @@
       "error": "Algo ha fallado",
       "prev": "Anterior",
       "next": "Siguiente",
-      "page": "Página {n}"
+      "page": "Página {n}",
+      "rule": {
+        "age_min": "Edad inferior a la mínima del tipo",
+        "age_max": "Edad superior a la máxima del tipo",
+        "adult_link": "Hace falta un adulto responsable en el hogar",
+        "pair": "Hace falta una pareja en el hogar",
+        "seniority": "Hace falta más antigüedad (mínimo 10 años)",
+        "retiree_age": "Hay que tener 65 años o más",
+        "type": "Tipo de socio desconocido"
+      }
     },
     "people": {
       "title": "Personas",
@@ -197,7 +206,9 @@
         "needs_booking": "Hace falta reserva ahora",
         "needs_pass": "Hace falta bono vigente",
         "capacity": "Aforo completo"
-      }
+      },
+      "autoChanges": "Aplicar cambios de categoría ({n})",
+      "autoConfirm": "{n} personas cambian de tipo por edad (Adherit→Jove a los 18, Jove→Individual a los 24). ¿Continuar?"
     },
     "dash": {
       "title": "Panel",

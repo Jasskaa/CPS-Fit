@@ -72,7 +72,16 @@
       "error": "Alguna cosa ha fallat",
       "prev": "Anterior",
       "next": "Següent",
-      "page": "Pàgina {n}"
+      "page": "Pàgina {n}",
+      "rule": {
+        "age_min": "Edat inferior a la mínima del tipus",
+        "age_max": "Edat superior a la màxima del tipus",
+        "adult_link": "Cal un adult responsable a la llar",
+        "pair": "Cal una parella a la llar",
+        "seniority": "Cal més antiguitat (mínim 10 anys)",
+        "retiree_age": "Cal tenir 65 anys o més",
+        "type": "Tipus de soci desconegut"
+      }
     },
     "people": {
       "title": "Persones",
@@ -197,7 +206,9 @@
         "needs_booking": "Cal reserva ara",
         "needs_pass": "Cal bo vigent",
         "capacity": "Aforament complet"
-      }
+      },
+      "autoChanges": "Aplica canvis de categoria ({n})",
+      "autoConfirm": "{n} persones canvien de tipus per edat (Adherit→Jove als 18, Jove→Individual als 24). Continuar?"
     },
     "dash": {
       "title": "Tauler",

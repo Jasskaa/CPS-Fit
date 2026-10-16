@@ -98,7 +98,7 @@ export default async function AccessPage({ searchParams }: { searchParams: Promi
                   <td className={td}>{p ? <Link className="font-semibold hover:text-primary-text" href={`/admin/persones/${p.id}`}>{p.first_name} {p.last_name}</Link> : '—'}</td>
                   <td className={td}>{pick(l.zones as unknown as object, 'name', locale)} <span className="text-xs text-muted">· {l.direction === 'in' ? t('club.access.in') : t('club.access.out')}</span></td>
                   <td className={td}><StatusChip value={l.allowed ? 'ok' : 'denied'} label={l.allowed ? t('club.access.log.allowed') : t('club.access.log.denied')} /></td>
-                  <td className={`${td} text-muted`}>{l.reason ? t(`club.people.reason.${l.reason}`) : ''}</td>
+                  <td className={`${td} text-muted`}>{l.reason ? (t.has(`club.people.reason.${l.reason}`) ? t(`club.people.reason.${l.reason}`) : l.reason) : ''}</td>
                   <td className={`${td} text-muted`}>{l.method}</td>
                 </tr>
               )

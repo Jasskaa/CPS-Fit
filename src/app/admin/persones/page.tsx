@@ -5,7 +5,7 @@ import { ageOn } from '@/lib/format'
 import { Avatar, DataTable, PageHeader, Pager, Section, StatusChip, td, th, trow, Field } from '@/components/club-ui'
 import { ActionButton, ActionForm, Modal } from '@/components/club-client'
 import { EmptyState } from '@/components/ui'
-import { createPerson, decideRequest } from './actions'
+import { applyAutoTypeChanges, createPerson, decideRequest, previewAutoTypeChanges } from './actions'
 
 export const metadata = { title: 'Persones' }
 const PAGE = 25
@@ -56,6 +56,7 @@ export default async function PeoplePage({ searchParams }: { searchParams: Promi
 
   const { data: requests } = await supabase.from('membership_requests').select('id, applicant, type_code, created_at').eq('status', 'pending').order('created_at')
   const { data: households } = writable ? await supabase.from('households').select('id, name').order('name').limit(300) : { data: [] }
+  const autoN = writable ? await previewAutoTypeChanges() : 0
   const pages = Math.max(1, Math.ceil((count ?? 0) / PAGE))
   const href = (p: number) => {
     const u = new URLSearchParams()
@@ -68,7 +69,8 @@ export default async function PeoplePage({ searchParams }: { searchParams: Promi
       <PageHeader
         title={t('club.people.title')}
         subtitle={t('club.people.count', { n: count ?? 0 })}
-        actions={writable && (
+        actions={writable && (<>
+          {autoN > 0 && <ActionButton action={applyAutoTypeChanges} label={t('club.people.autoChanges', { n: autoN })} className="btn btn-ghost" confirm={t('club.people.autoConfirm', { n: autoN })} />}
           <Modal label={<><Plus size={16} aria-hidden /> {t('club.people.newPerson')}</>} title={t('club.people.newPerson')}>
             <ActionForm action={createPerson} submit={t('club.people.create')} className="grid gap-3 sm:grid-cols-2">
                 <Field label={t('club.people.first')}><input name="first_name" required className="input" /></Field>
@@ -94,7 +96,7 @@ export default async function PeoplePage({ searchParams }: { searchParams: Promi
                 <label className="flex items-center gap-2 text-sm sm:col-span-2"><input type="checkbox" name="consent" /> {t('club.people.consent')}</label>
               </ActionForm>
           </Modal>
-        )}
+        </>)}
       />
 
       {requests && requests.length > 0 && (
