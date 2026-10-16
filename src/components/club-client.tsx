@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useRef, useState, useTransition } from 'react'
+import { createContext, useContext, useEffect, useRef, useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { X } from 'lucide-react'
@@ -42,13 +42,17 @@ export function ActionForm({ action, children, submit, className = 'space-y-3', 
   return (
     <form
       className={className}
-      action={(fd) => start(async () => {
-        setError(null)
-        const r = await action(fd)
-        if (r && !r.ok) { setError(r.error === 'invalid' ? t('error') : (r.error ?? t('error'))); return }
-        router.refresh()
-        close()
-      })}
+      onSubmit={(e) => {
+        e.preventDefault()
+        const fd = new FormData(e.currentTarget)
+        start(async () => {
+          setError(null)
+          const r = await action(fd)
+          if (r && !r.ok) { setError(r.error === 'invalid' ? t('error') : (r.error ?? t('error'))); return }
+          router.refresh()
+          close()
+        })
+      }}
     >
       {children}
       {error && <p role="alert" className="rounded-lg bg-danger-soft p-2.5 text-sm font-medium text-danger">{error}</p>}
@@ -77,5 +81,26 @@ export function ActionButton({ action, args = [], label, className = 'btn btn-gh
       >{label}</button>
       {error && <span role="alert" className="text-xs text-danger">{error}</span>}
     </>
+  )
+}
+
+/** Diálogo controlado desde fuera (abre/cierra según `open`). */
+export function Dialog({ open, onClose, title, children, wide = false }: { open: boolean; onClose: () => void; title: string; children: React.ReactNode; wide?: boolean }) {
+  const ref = useRef<HTMLDialogElement>(null)
+  const t = useTranslations('club.common')
+  useEffect(() => {
+    const d = ref.current
+    if (!d) return
+    if (open && !d.open) d.showModal()
+    if (!open && d.open) d.close()
+  }, [open])
+  return (
+    <dialog ref={ref} onClose={onClose} onClick={(e) => e.target === ref.current && onClose()} className={`card m-auto max-h-[90vh] overflow-y-auto p-0 backdrop:bg-black/50 backdrop:backdrop-blur-sm ${wide ? 'w-[min(94vw,46rem)]' : 'w-[min(92vw,34rem)]'}`}>
+      <div className="flex items-center justify-between border-b border-border px-5 py-3">
+        <h2 className="font-display text-2xl font-bold">{title}</h2>
+        <button type="button" className="btn btn-ghost !min-h-9 !px-2" aria-label={t('close')} onClick={onClose}><X size={16} /></button>
+      </div>
+      <CloseCtx.Provider value={onClose}><div className="p-5">{open ? children : null}</div></CloseCtx.Provider>
+    </dialog>
   )
 }

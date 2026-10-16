@@ -1,7 +1,7 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { actionCtx, ilikeSafe } from '@/lib/ctx'
+import { actionCtx, ilikeSafe, personSearch } from '@/lib/ctx'
 import { ageOn } from '@/lib/format'
 import { verifyCardToken } from '@/modules/access/qr'
 import { decideZone, loadAccessConfig, loadSubject } from '@/modules/access/server'
@@ -66,6 +66,6 @@ export async function findForReception(q: string) {
   const { supabase } = await actionCtx('access')
   const s = ilikeSafe(q)
   if (s.length < 2) return []
-  const { data } = await supabase.from('people').select('id, first_name, last_name, birth_date').or(`first_name.ilike.%${s}%,last_name.ilike.%${s}%,national_id.ilike.%${s}%`).eq('status', 'active').order('last_name').limit(6)
+  const { data } = await personSearch(supabase.from('people').select('id, first_name, last_name, birth_date'), s).eq('status', 'active').order('last_name').limit(6)
   return (data ?? []).map((p) => ({ id: p.id, name: `${p.first_name} ${p.last_name}`, age: ageOn(p.birth_date) }))
 }

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Plus, Search, UserCheck } from 'lucide-react'
-import { pageCtx, pick, num, str, ilikeSafe } from '@/lib/ctx'
+import { pageCtx, pick, num, str, ilikeSafe, personSearch } from '@/lib/ctx'
 import { ageOn } from '@/lib/format'
 import { Avatar, DataTable, PageHeader, Pager, Section, StatusChip, td, th, trow, Field } from '@/components/club-ui'
 import { ActionButton, ActionForm, Modal } from '@/components/club-client'
@@ -41,7 +41,7 @@ export default async function PeoplePage({ searchParams }: { searchParams: Promi
   let query = supabase.from('people')
     .select('id, first_name, last_name, birth_date, status, email, household_id, memberships(status, membership_types(code, name_ca, name_es)), households(name)', { count: 'exact' })
     .order('last_name').order('first_name').range((page - 1) * PAGE, page * PAGE - 1)
-  if (q) query = query.or(`first_name.ilike.%${q}%,last_name.ilike.%${q}%,email.ilike.%${q}%,national_id.ilike.%${q}%`)
+  if (q) query = personSearch(query, q)
   if (status) query = query.eq('status', status)
   if (type === 'none' && typeIds) query = query.not('id', 'in', `(${typeIds.join(',') || '00000000-0000-0000-0000-000000000000'})`)
   else if (typeIds) query = query.in('id', typeIds.length ? typeIds : ['00000000-0000-0000-0000-000000000000'])

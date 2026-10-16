@@ -28,3 +28,12 @@ export function pick(r: object, base: string, locale: string): string {
 export const num = (v: string | string[] | undefined, d = 1) => Math.max(1, Number(Array.isArray(v) ? v[0] : v) || d)
 export const str = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v) ?? ''
 export const ilikeSafe = (s: string) => s.replace(/[%,()*\\]/g, ' ').trim()
+
+/** Búsqueda de personas por varias palabras (cada una debe aparecer en nombre, apellidos, correo o DNI). */
+export function personSearch<T extends { or: (f: string) => T }>(qb: T, text: string): T {
+  let out = qb
+  for (const tok of ilikeSafe(text).split(/\s+/).filter(Boolean).slice(0, 4)) {
+    out = out.or(`first_name.ilike.%${tok}%,last_name.ilike.%${tok}%,email.ilike.%${tok}%,national_id.ilike.%${tok}%`)
+  }
+  return out
+}

@@ -32,7 +32,7 @@ async function ClubDashboard() {
     supabase.from('zone_presence').select('zone_id, present'),
     supabase.from('zones').select('id, name_ca, name_es, capacity, color').eq('active', true).order('sort'),
     supabase.from('bookings').select('id', { count: 'exact', head: true }).eq('status', 'confirmed').gte('starts_at', dayStart).lt('starts_at', new Date(new Date(dayStart).getTime() + 86400000).toISOString()),
-    supabase.from('bookings').select('id, starts_at, ends_at, price_cents, people(first_name, last_name), resources(name)').eq('status', 'confirmed').gte('ends_at', now.toISOString()).order('starts_at').limit(7),
+    supabase.from('bookings').select('id, starts_at, ends_at, price_cents, people!bookings_person_id_fkey(first_name, last_name), resources(name)').eq('status', 'confirmed').gte('ends_at', now.toISOString()).order('starts_at').limit(7),
     supabase.from('payments').select('amount_cents, paid_at').eq('status', 'succeeded').gte('paid_at', since),
     supabase.from('invoices').select('total_cents').eq('status', 'pending'),
     supabase.from('invoices').select('total_cents').eq('status', 'overdue'),

@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
-import { actionCtx, ilikeSafe } from '@/lib/ctx'
+import { actionCtx, ilikeSafe, personSearch } from '@/lib/ctx'
 import { createClient } from '@/lib/supabase/server'
 import { STAFF_ROLES } from '@/lib/permissions'
 import { requireRole } from '@/lib/auth'
@@ -16,8 +16,7 @@ export async function searchPeopleAction(q: string): Promise<{ id: string; name:
   const s = ilikeSafe(q)
   if (s.length < 2) return []
   const supabase = await createClient()
-  const { data } = await supabase.from('people').select('id, first_name, last_name, email, status')
-    .or(`first_name.ilike.%${s}%,last_name.ilike.%${s}%,email.ilike.%${s}%,national_id.ilike.%${s}%`).order('last_name').limit(8)
+  const { data } = await personSearch(supabase.from('people').select('id, first_name, last_name, email, status'), s).order('last_name').limit(8)
   return (data ?? []).map((p) => ({ id: p.id, name: `${p.first_name} ${p.last_name}`, sub: p.email ?? p.status }))
 }
 
