@@ -1,0 +1,26 @@
+export default {
+  ca: { club: { comms: {
+    title: 'Comunicació', subtitle: 'Notícies, avisos segmentats, missatges dels socis, enquestes, incidències i contingut del club.',
+    tabs: { news: 'Notícies', announcements: 'Avisos', messages: 'Missatges', polls: 'Enquestes', incidents: 'Incidències', content: 'Història i galeria' },
+    newNews: 'Nova notícia', noNews: 'Encara no hi ha notícies', titleCa: 'Títol (català)', titleEs: 'Títol (castellà)', excerpt: 'Resum', body: 'Text', category: 'Categoria', audience: 'Audiència', cover: 'Imatge de portada (URL)', pinned: 'Destacada (fixada a dalt)',
+    aud: { all: 'Tothom', members: 'Només socis', section: 'Una secció', team: 'Un equip' }, newsStatus: { draft: 'Esborrany', scheduled: 'Programada', published: 'Publicada' },
+    newAnn: 'Nou avís', publish: 'Publica', notify: 'Envia també notificació push', until: 'Fins al', noAnn: 'No hi ha avisos actius.',
+    noMessages: 'Cap missatge', msgStatus: { new: 'Nou', open: 'En curs', closed: 'Tancat' }, cat: { query: 'Consulta', suggestion: 'Suggeriment', incident: 'Incidència' }, reply: 'Respon', send: 'Envia', close: 'Tanca', reopen: 'Reobre',
+    newPoll: 'Nova enquesta', question: 'Pregunta', options: 'Opcions', optionsHint: 'Una opció per línia (mínim 2).', noPolls: 'Encara no hi ha enquestes', votes: '{n} vots',
+    tasks: 'Incidències i tasques', newTask: 'Nova tasca', taskKind: { incident: 'Incidència', maintenance: 'Manteniment', task: 'Tasca' }, priority: 'Prioritat', prio: { low: 'Baixa', normal: 'Normal', high: 'Alta', urgent: 'Urgent' }, due: 'Data límit', start: 'Comença', resolve: 'Resol', inProgress: 'En curs', resolved: 'Resolta',
+    inventory: 'Inventari i material', qty: 'Quantitat', min: 'Mínim',
+    history: 'Història del club', addMilestone: 'Afegeix fita', year: 'Any', gallery: 'Galeria', addPhoto: 'Afegeix foto', album: 'Àlbum', caption: 'Peu de foto', noPhotos: 'Encara no hi ha fotos.',
+  } } },
+  es: { club: { comms: {
+    title: 'Comunicación', subtitle: 'Noticias, avisos segmentados, mensajes de los socios, encuestas, incidencias y contenido del club.',
+    tabs: { news: 'Noticias', announcements: 'Avisos', messages: 'Mensajes', polls: 'Encuestas', incidents: 'Incidencias', content: 'Historia y galería' },
+    newNews: 'Nueva noticia', noNews: 'Todavía no hay noticias', titleCa: 'Título (catalán)', titleEs: 'Título (castellano)', excerpt: 'Resumen', body: 'Texto', category: 'Categoría', audience: 'Audiencia', cover: 'Imagen de portada (URL)', pinned: 'Destacada (fijada arriba)',
+    aud: { all: 'Todos', members: 'Solo socios', section: 'Una sección', team: 'Un equipo' }, newsStatus: { draft: 'Borrador', scheduled: 'Programada', published: 'Publicada' },
+    newAnn: 'Nuevo aviso', publish: 'Publicar', notify: 'Enviar también notificación push', until: 'Hasta el', noAnn: 'No hay avisos activos.',
+    noMessages: 'Ningún mensaje', msgStatus: { new: 'Nuevo', open: 'En curso', closed: 'Cerrado' }, cat: { query: 'Consulta', suggestion: 'Sugerencia', incident: 'Incidencia' }, reply: 'Responder', send: 'Enviar', close: 'Cerrar', reopen: 'Reabrir',
+    newPoll: 'Nueva encuesta', question: 'Pregunta', options: 'Opciones', optionsHint: 'Una opción por línea (mínimo 2).', noPolls: 'Todavía no hay encuestas', votes: '{n} votos',
+    tasks: 'Incidencias y tareas', newTask: 'Nueva tarea', taskKind: { incident: 'Incidencia', maintenance: 'Mantenimiento', task: 'Tarea' }, priority: 'Prioridad', prio: { low: 'Baja', normal: 'Normal', high: 'Alta', urgent: 'Urgente' }, due: 'Fecha límite', start: 'Empezar', resolve: 'Resolver', inProgress: 'En curso', resolved: 'Resuelta',
+    inventory: 'Inventario y material', qty: 'Cantidad', min: 'Mínimo',
+    history: 'Historia del club', addMilestone: 'Añadir hito', year: 'Año', gallery: 'Galería', addPhoto: 'Añadir foto', album: 'Álbum', caption: 'Pie de foto', noPhotos: 'Todavía no hay fotos.',
+  } } },
+}

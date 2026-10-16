@@ -120,7 +120,7 @@ export async function returnSepaItem(itemId: string, fd: FormData): Promise<R> {
   if (it.status === 'collected') await supabase.from('payments').update({ status: 'refunded' }).eq('invoice_id', it.invoice_id).eq('method', 'sepa')
   await supabase.from('sepa_items').update({ status: 'returned', return_reason: reason }).eq('id', itemId)
   await supabase.from('invoices').update({ status: 'overdue', paid_at: null }).eq('id', it.invoice_id)
-  await supabase.from('notifications').insert({ person_id: it.person_id, channel: 'app', title: 'Rebut retornat', body: 'El banc ha retornat el rebut de la quota. Contacta amb recepció per regularitzar-ho.', url: '/app/pagaments' })
+  await supabase.from('notifications').insert({ person_id: it.person_id, channel: 'push', title: 'Rebut retornat', body: 'El banc ha retornat el rebut de la quota. Contacta amb recepció per regularitzar-ho.', url: '/app/pagaments' })
   revalidatePath('/admin/facturacio')
   return { ok: true }
 }
@@ -172,7 +172,7 @@ export async function sendReminder(invoiceId: string): Promise<R> {
   const { supabase } = await actionCtx('billing')
   const { data: inv } = await supabase.from('invoices').select('person_id, number, total_cents').eq('id', invoiceId).single()
   if (!inv) return { ok: false, error: 'not_found' }
-  await supabase.from('notifications').insert({ person_id: inv.person_id, channel: 'app', title: 'Recordatori de pagament', body: `Tens la factura ${inv.number} pendent de pagament.`, url: '/app/pagaments' })
+  await supabase.from('notifications').insert({ person_id: inv.person_id, channel: 'push', title: 'Recordatori de pagament', body: `Tens la factura ${inv.number} pendent de pagament.`, url: '/app/pagaments' })
   return { ok: true }
 }
 

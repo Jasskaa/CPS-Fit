@@ -104,3 +104,28 @@ export function Dialog({ open, onClose, title, children, wide = false }: { open:
     </dialog>
   )
 }
+
+/** Selector de persona con búsqueda; deja el id en un input oculto `name` para usarlo en un ActionForm. */
+export function PersonPicker({ search, name = 'person_id', placeholder }: { search: (q: string) => Promise<{ id: string; name: string }[]>; name?: string; placeholder: string }) {
+  const [q, setQ] = useState('')
+  const [found, setFound] = useState<{ id: string; name: string }[]>([])
+  const [picked, setPicked] = useState<{ id: string; name: string } | null>(null)
+  useEffect(() => {
+    if (q.trim().length < 2 || picked) { setFound([]); return }
+    const h = setTimeout(async () => setFound(await search(q)), 200)
+    return () => clearTimeout(h)
+  }, [q, picked, search])
+  return (
+    <div className="space-y-1">
+      <input type="hidden" name={name} value={picked?.id ?? ''} />
+      {picked ? (
+        <div className="flex items-center justify-between rounded-xl border border-border bg-surface-2 px-3 py-2 text-sm"><span className="font-semibold">{picked.name}</span><button type="button" className="text-primary-text underline" onClick={() => { setPicked(null); setQ('') }}>✕</button></div>
+      ) : (
+        <>
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={placeholder} aria-label={placeholder} className="input" autoComplete="off" />
+          <ul className="divide-y divide-border rounded-xl border border-border empty:hidden">{found.map((p) => <li key={p.id}><button type="button" className="flex min-h-11 w-full items-center px-3 text-left text-sm font-semibold hover:bg-surface-2" onClick={() => setPicked(p)}>{p.name}</button></li>)}</ul>
+        </>
+      )}
+    </div>
+  )
+}

@@ -13,6 +13,7 @@ for (const file of files) {
   const src = readFileSync(file, 'utf8')
   const vars = new Map()
   for (const m of src.matchAll(/const (\w+) = (?:await )?(?:useTranslations|getTranslations)\(\s*(?:'([^']*)')?\s*\)/g)) vars.set(m[1], m[2] ?? '')
+  if (/t[^=]*\} = await pageCtx\(/.test(src)) vars.set('t', '')
   for (const [v, ns] of vars) {
     const re = new RegExp('(?<![\\w.])' + v + '\\(\\s*([\'"`])([^\'"`]+)\\1', 'g')
     for (const m of src.matchAll(re)) {

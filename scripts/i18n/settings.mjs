@@ -1,0 +1,16 @@
+export default {
+  ca: { club: {
+    audit: { title: 'Auditoria', subtitle: 'Qui ha fet què i quan. El registre només guarda quins camps han canviat, mai els valors sensibles.', entity: 'Entitat', action: 'Acció', actions: { insert: 'Creació', update: 'Modificació', delete: 'Esborrat' }, who: 'Qui', fields: 'Camps canviats', system: 'Sistema', empty: 'Cap registre amb aquests filtres', hint: 'Les altes, canvis i baixes de persones, quotes, factures, pagaments, reserves, excepcions d’accés, remeses i configuració queden registrades automàticament.' },
+    settings: { title: 'Configuració', subtitle: 'Dades del club, facturació, regles d’accés, reserves, quotes i personal.', club: 'Dades del club', reception: 'Horari de recepció', bookingUrl: 'Enllaç de reserves actual', billing: 'Facturació i SEPA', ibanExample: 'IBAN d’exemple (dades de demostració): substitueix-lo pel del club abans d’utilitzar-ho de debò.', creditorName: 'Nom del creditor', creditorId: 'Identificador de creditor SEPA', entryFee: 'Quota d’entrada (€)', dueDays: 'Dies de venciment',
+      accessTitle: 'Regles d’accés', debtDays: 'Dies de deute abans de bloquejar', blockDebt: 'Bloqueja l’accés amb deute', bookingsTitle: 'Reserves', waitlist: 'Activa la llista d’espera', strikes: 'No-presentats abans de sancionar',
+      types: 'Tipus de soci i quotes', ages: 'Edats', annualFee: 'Quota anual', active: 'Actiu', inactive: 'Inactiu', zones: 'Zones i aforament', capacity: 'Aforament', staff: 'Personal i rols', staffHint: 'Els rols limiten què veu cada persona al panell; la seguretat real la garanteix la base de dades.', role: 'Rol',
+    },
+  } },
+  es: { club: {
+    audit: { title: 'Auditoría', subtitle: 'Quién ha hecho qué y cuándo. El registro solo guarda qué campos han cambiado, nunca los valores sensibles.', entity: 'Entidad', action: 'Acción', actions: { insert: 'Creación', update: 'Modificación', delete: 'Borrado' }, who: 'Quién', fields: 'Campos cambiados', system: 'Sistema', empty: 'Ningún registro con estos filtros', hint: 'Las altas, cambios y bajas de personas, cuotas, facturas, pagos, reservas, excepciones de acceso, remesas y configuración quedan registradas automáticamente.' },
+    settings: { title: 'Configuración', subtitle: 'Datos del club, facturación, reglas de acceso, reservas, cuotas y personal.', club: 'Datos del club', reception: 'Horario de recepción', bookingUrl: 'Enlace de reservas actual', billing: 'Facturación y SEPA', ibanExample: 'IBAN de ejemplo (datos de demostración): sustitúyelo por el del club antes de usarlo de verdad.', creditorName: 'Nombre del acreedor', creditorId: 'Identificador de acreedor SEPA', entryFee: 'Cuota de entrada (€)', dueDays: 'Días de vencimiento',
+      accessTitle: 'Reglas de acceso', debtDays: 'Días de deuda antes de bloquear', blockDebt: 'Bloquear el acceso con deuda', bookingsTitle: 'Reservas', waitlist: 'Activar la lista de espera', strikes: 'No presentados antes de sancionar',
+      types: 'Tipos de socio y cuotas', ages: 'Edades', annualFee: 'Cuota anual', active: 'Activo', inactive: 'Inactivo', zones: 'Zonas y aforo', capacity: 'Aforo', staff: 'Personal y roles', staffHint: 'Los roles limitan lo que ve cada persona en el panel; la seguridad real la garantiza la base de datos.', role: 'Rol',
+    },
+  } },
+}
