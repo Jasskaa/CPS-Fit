@@ -41,3 +41,12 @@
 **D11 · Tiempo real.** Supabase Realtime sobre `access_logs` y `bookings` para aforo y calendario en vivo.
 
 **D12 · Módulos por dominio.** Código nuevo en `src/modules/<dominio>/` (reglas puras, consultas, acciones, componentes). Lo de gimnàs de la fase 1 se queda donde está y se documenta.
+
+
+## Estado del panel de administración (octubre 2026)
+
+Hecho y verificado (E2E en navegador + pruebas SQL de RLS): navegación por rol y paleta ⌘K, tablero en vivo, personas con ficha 360º, accesos (terminal de recepción con QR rotatorio, aforo en directo, registro, reglas), reservas (calendario con arrastrar y soltar, recurrencia, cobro, lista de espera, tarifas), facturación (PDF, cuotas enero/junio, remesas SEPA pain.008, TPV, caja, rectificativas), secciones/equipos/eventos, comunicación, informes (CSV y PDF para la junta), auditoría y configuración.
+
+Pendiente: app del socio para el club (carnet QR, reservas con pago, pagos, familia, noticias), pasarela real de pago (hoy simulada), importación desde Poliwin, notificaciones reales (hoy se guardan en la tabla `notifications`).
+
+Decisiones nuevas: D13 los datos económicos solo los ven administración, junta, recepción y la propia familia (los entrenadores y monitores ven a sus jugadores, no lo que pagan); D14 el número de factura usa el año de creación; D15 las remesas históricas reconstruyen su XML al descargarlas.
