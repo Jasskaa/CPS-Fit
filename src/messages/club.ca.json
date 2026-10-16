@@ -222,6 +222,86 @@
       "overdueInvoices": "Factures vençudes",
       "incidents": "Incidències obertes",
       "noIncidents": "Cap incidència oberta. 🎉"
+    },
+    "access": {
+      "title": "Accessos",
+      "subtitle": "Control d’entrades, aforament en directe i regles per zona.",
+      "tabs": {
+        "live": "En directe",
+        "reception": "Recepció",
+        "log": "Registre",
+        "rules": "Regles"
+      },
+      "zone": "Zona",
+      "direction": "Sentit",
+      "in": "Entrada",
+      "out": "Sortida",
+      "scanPh": "Escaneja el QR o escriu el número de carnet…",
+      "check": "Comprova",
+      "camera": "Usar la càmera",
+      "stopCamera": "Atura la càmera",
+      "manual": "Cerca manual",
+      "manualPh": "Nom o DNI…",
+      "allowed": "ACCÉS PERMÈS",
+      "denied": "ACCÉS DENEGAT",
+      "waiting": "Esperant lectura…",
+      "errors": {
+        "empty": "Escriu o escaneja un codi",
+        "not_found": "Persona o carnet no trobats",
+        "invalid_qr": "QR caducat o no vàlid",
+        "zone": "Zona no vàlida",
+        "not_configured": "Falta configurar el secret del QR",
+        "blocked": "Carnet bloquejat"
+      },
+      "insideNow": "Dins ara",
+      "lastEntries": "Últims moviments",
+      "noMovements": "Encara no hi ha moviments.",
+      "log": {
+        "person": "Persona",
+        "zone": "Zona",
+        "when": "Quan",
+        "result": "Resultat",
+        "reason": "Motiu",
+        "method": "Mètode",
+        "all": "Tots",
+        "onlyDenied": "Només denegats",
+        "allowed": "Permès",
+        "denied": "Denegat",
+        "empty": "Cap moviment amb aquests filtres",
+        "exportCsv": "Exporta CSV"
+      },
+      "rules": {
+        "audience": "Públic",
+        "member": "Socis",
+        "non_member": "No socis",
+        "pass_holder": "Amb bo",
+        "hours": "Horari",
+        "days": "Dies",
+        "season": "Temporada",
+        "booking": "Cal reserva",
+        "pass": "Bo",
+        "allDay": "Tot el dia",
+        "allSeason": "Tot l’any",
+        "rule": "Regla",
+        "deny": "Denega",
+        "allow": "Permet",
+        "d": {
+          "0": "dg",
+          "1": "dl",
+          "2": "dt",
+          "3": "dc",
+          "4": "dj",
+          "5": "dv",
+          "6": "ds"
+        },
+        "hint": "Les regles es defineixen com a dades: es poden canviar sense tocar codi."
+      },
+      "qr": {
+        "title": "Carnet digital",
+        "hint": "El codi canvia cada minut.",
+        "refresh": "S’actualitza en {s} s",
+        "error": "No s’ha pogut generar el codi"
+      }
     }
   }
 }

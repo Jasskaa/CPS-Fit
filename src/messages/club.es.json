@@ -222,6 +222,86 @@
       "overdueInvoices": "Facturas vencidas",
       "incidents": "Incidencias abiertas",
       "noIncidents": "Ninguna incidencia abierta. 🎉"
+    },
+    "access": {
+      "title": "Accesos",
+      "subtitle": "Control de entradas, aforo en directo y reglas por zona.",
+      "tabs": {
+        "live": "En directo",
+        "reception": "Recepción",
+        "log": "Registro",
+        "rules": "Reglas"
+      },
+      "zone": "Zona",
+      "direction": "Sentido",
+      "in": "Entrada",
+      "out": "Salida",
+      "scanPh": "Escanea el QR o escribe el número de carnet…",
+      "check": "Comprobar",
+      "camera": "Usar la cámara",
+      "stopCamera": "Parar la cámara",
+      "manual": "Búsqueda manual",
+      "manualPh": "Nombre o DNI…",
+      "allowed": "ACCESO PERMITIDO",
+      "denied": "ACCESO DENEGADO",
+      "waiting": "Esperando lectura…",
+      "errors": {
+        "empty": "Escribe o escanea un código",
+        "not_found": "Persona o carnet no encontrados",
+        "invalid_qr": "QR caducado o no válido",
+        "zone": "Zona no válida",
+        "not_configured": "Falta configurar el secreto del QR",
+        "blocked": "Carnet bloqueado"
+      },
+      "insideNow": "Dentro ahora",
+      "lastEntries": "Últimos movimientos",
+      "noMovements": "Todavía no hay movimientos.",
+      "log": {
+        "person": "Persona",
+        "zone": "Zona",
+        "when": "Cuándo",
+        "result": "Resultado",
+        "reason": "Motivo",
+        "method": "Método",
+        "all": "Todos",
+        "onlyDenied": "Solo denegados",
+        "allowed": "Permitido",
+        "denied": "Denegado",
+        "empty": "Ningún movimiento con estos filtros",
+        "exportCsv": "Exportar CSV"
+      },
+      "rules": {
+        "audience": "Público",
+        "member": "Socios",
+        "non_member": "No socios",
+        "pass_holder": "Con bono",
+        "hours": "Horario",
+        "days": "Días",
+        "season": "Temporada",
+        "booking": "Requiere reserva",
+        "pass": "Bono",
+        "allDay": "Todo el día",
+        "allSeason": "Todo el año",
+        "rule": "Regla",
+        "deny": "Deniega",
+        "allow": "Permite",
+        "d": {
+          "0": "do",
+          "1": "lu",
+          "2": "ma",
+          "3": "mi",
+          "4": "ju",
+          "5": "vi",
+          "6": "sá"
+        },
+        "hint": "Las reglas se definen como datos: se pueden cambiar sin tocar código."
+      },
+      "qr": {
+        "title": "Carnet digital",
+        "hint": "El código cambia cada minuto.",
+        "refresh": "Se actualiza en {s} s",
+        "error": "No se ha podido generar el código"
+      }
     }
   }
 }
